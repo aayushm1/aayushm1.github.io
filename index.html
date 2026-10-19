@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aayush Mehan — AI Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1720;
+    --ink-soft:#2A3442;
+    --paper:#EEEDE7;
+    --paper-raised:#F8F7F3;
+    --amber:#D98E2B;
+    --amber-soft:#F2DDB3;
+    --teal:#1F6F63;
+    --muted:#5B6472;
+    --line:#D9D6CC;
+    --line-dark:#324055;
+    --maxw:860px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    color:inherit;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(238,237,231,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-name{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px;}
+  .nav-links{display:flex; gap:26px; font-size:14px; color:var(--muted);}
+  .nav-links a{text-decoration:none; transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    font-size:14px; font-weight:500; padding:8px 16px;
+    border:1px solid var(--ink); border-radius:3px;
+    text-decoration:none; white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--paper);}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:var(--ink); color:var(--paper-raised);
+    padding:88px 0 56px;
+  }
+  .eyebrow-line{
+    font-size:14px; color:var(--amber-soft); margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow-line .dot{width:7px;height:7px;border-radius:50%;background:var(--amber); flex:none;}
+  h1.display{
+    font-size:clamp(34px, 5vw, 50px);
+    line-height:1.08;
+    font-weight:600;
+    max-width:11.5ch;
+    margin-bottom:22px;
+  }
+  .hero-sub{
+    max-width:56ch; color:#C7CCD6; font-size:17.5px; margin-bottom:34px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:54px;}
+  .btn{
+    font-size:14.5px; font-weight:500; padding:11px 20px;
+    border-radius:3px; text-decoration:none; display:inline-block;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--amber); color:var(--ink);}
+  .btn-primary:hover{background:#E6A149;}
+  .btn-ghost{border:1px solid var(--line-dark); color:var(--paper-raised);}
+  .btn-ghost:hover{border-color:var(--paper-raised);}
+
+  .stat-row{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line-dark); border:1px solid var(--line-dark);
+    border-radius:4px; overflow:hidden;
+  }
+  .stat{background:#151F2C; padding:20px 18px;}
+  .stat .num{font-family:'Space Grotesk',sans-serif; font-size:23px; font-weight:600; color:var(--paper-raised);}
+  .stat .label{font-size:12.5px; color:#8E96A3; margin-top:6px; line-height:1.4;}
+
+  @media(max-width:640px){
+    .stat-row{grid-template-columns:repeat(2,1fr);}
+    .nav-links{display:none;}
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:68px 0;}
+  .section-head{margin-bottom:40px; max-width:62ch;}
+  .section-head .kicker{color:var(--teal); font-weight:500; font-size:14.5px; margin-bottom:10px;}
+  .section-head h2{font-size:28px; font-weight:600; margin-bottom:12px;}
+  .section-head p{color:var(--muted); font-size:15.5px;}
+
+  /* ---------- PILLARS ---------- */
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .pillar{border-left:3px solid var(--amber); padding-left:18px;}
+  .pillar h3{font-size:17px; margin-bottom:8px;}
+  .pillar p{color:var(--muted); font-size:14.5px; margin:0;}
+  @media(max-width:700px){.pillars{grid-template-columns:1fr;}}
+
+  /* ---------- CASE STUDIES ---------- */
+  .case{
+    border-top:1px solid var(--line);
+    padding:26px 0;
+  }
+  .case:last-child{border-bottom:1px solid var(--line);}
+  .case-head{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap:20px; cursor:pointer; background:none; border:none; width:100%;
+    text-align:left; font:inherit; color:inherit; padding:0;
+  }
+  .case-head-text h3{font-size:19px; font-weight:600; margin-bottom:6px;}
+  .case-meta{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;}
+  .tag{
+    font-size:12px; color:var(--muted); background:var(--paper-raised);
+    border:1px solid var(--line); padding:3px 9px; border-radius:20px;
+  }
+  .case-head p.blurb{color:var(--muted); font-size:14.5px; max-width:56ch; margin:0;}
+  .case-toggle{
+    flex:none; width:30px; height:30px; border-radius:50%;
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-size:16px; color:var(--ink); transition:transform .2s ease, background .2s ease;
+    margin-top:2px;
+  }
+  .case.open .case-toggle{transform:rotate(45deg); background:var(--ink); color:var(--paper);}
+  .case-body{
+    max-height:0; overflow:hidden; transition:max-height .28s ease;
+  }
+  .case.open .case-body{max-height:900px;}
+  .case-body-inner{padding-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  @media(max-width:700px){.case-body-inner{grid-template-columns:1fr;}}
+  .case-col h4{font-size:13px; text-transform:none; color:var(--teal); margin-bottom:8px; font-weight:600;}
+  .case-col p, .case-col li{font-size:14.5px; color:var(--ink-soft); margin:0 0 6px;}
+  .case-col ul{margin:0; padding-left:18px;}
+  .metric-callout{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:4px;
+    padding:14px 16px; margin-bottom:14px;
+  }
+  .metric-callout .m-num{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:20px;}
+  .metric-callout .m-note{font-size:13px; color:var(--muted); margin-top:4px;}
+
+  /* ---------- APPROACH ---------- */
+  .approach-list{position:relative; padding-left:34px;}
+  .approach-list::before{
+    content:''; position:absolute; left:10px; top:6px; bottom:6px; width:1px;
+    background:var(--line);
+  }
+  .approach-step{position:relative; padding-bottom:34px;}
+  .approach-step:last-child{padding-bottom:0;}
+  .approach-step::before{
+    content:attr(data-step); position:absolute; left:-34px; top:0;
+    width:22px; height:22px; border-radius:50%; background:var(--ink); color:var(--paper);
+    font-size:11px; font-family:'Space Grotesk',sans-serif; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .approach-step h3{font-size:17px; margin-bottom:6px;}
+  .approach-step p{color:var(--muted); font-size:14.5px; margin:0; max-width:58ch;}
+
+  /* ---------- SKILLS ---------- */
+  .skill-group{margin-bottom:22px;}
+  .skill-group h4{font-size:14.5px; color:var(--teal); margin-bottom:10px; font-weight:600;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:13px; padding:6px 12px; border-radius:20px;
+    background:var(--paper-raised); border:1px solid var(--line); color:var(--ink-soft);
+  }
+
+  /* ---------- BACKGROUND / TIMELINE ---------- */
+  .timeline{position:relative; padding-left:28px;}
+  .timeline::before{content:''; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .tl-item{position:relative; padding-bottom:28px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:''; position:absolute; left:-28px; top:4px; width:9px; height:9px;
+    border-radius:50%; background:var(--amber); border:2px solid var(--paper);
+    box-shadow:0 0 0 1px var(--line);
+  }
+  .tl-item .tl-date{font-size:13px; color:var(--muted); margin-bottom:4px;}
+  .tl-item h3{font-size:16.5px; margin-bottom:3px;}
+  .tl-item .tl-org{font-size:14px; color:var(--teal); margin-bottom:6px;}
+  .tl-item p.desc{font-size:14px; color:var(--muted); margin:0; max-width:58ch;}
+
+  /* ---------- CONTACT ---------- */
+  footer{background:var(--ink); color:var(--paper-raised); padding:70px 0 40px;}
+  footer h2{font-size:26px; margin-bottom:16px; max-width:20ch;}
+  footer p{color:#B9BFC9; max-width:48ch; margin-bottom:28px; font-size:15.5px;}
+  .contact-links{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:46px;}
+  .copyright{font-size:13px; color:#6B7585; border-top:1px solid var(--line-dark); padding-top:22px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-name">Aayush Mehan</div>
+    <div class="nav-links">
+      <a href="#work">Case studies</a>
+      <a href="#approach">Approach</a>
+      <a href="#background">Background</a>
+    </div>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="dot"></span> AI Product Manager · Agentic platforms & enterprise search</div>
+    <h1 class="display">Building the agents and search systems that make enterprise knowledge findable.</h1>
+    <p class="hero-sub">I'm a product manager with 8+ years in B2B SaaS, the last two spent shipping AI agents, retrieval-augmented systems, and enterprise search inside Prezent AI's platform. I care about products that are fast, grounded, and trustworthy — not just fluent.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#work">View case studies</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num">8+ yrs</div><div class="label">in B2B SaaS product management</div></div>
+      <div class="stat"><div class="num">10+</div><div class="label">Fortune 500 accounts on a platform I own</div></div>
+      <div class="stat"><div class="num">~30%</div><div class="label">search relevance lift, A/B tested</div></div>
+      <div class="stat"><div class="num">1,500+</div><div class="label">analyst hours saved annually (ZAIDYN)</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="pillars">
+  <div class="wrap">
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Agentic & AI products</h3>
+        <p>Shipping LLM-driven agents end to end — content automation, analytics agents, and document intelligence built on RAG.</p>
+      </div>
+      <div class="pillar">
+        <h3>Enterprise search & retrieval</h3>
+        <p>Metadata, embeddings, and relevance tuning for search that enterprise users actually trust.</p>
+      </div>
+      <div class="pillar">
+        <h3>Platform & integration strategy</h3>
+        <p>API-first architecture, auth, and webhook-driven integrations that scale to Fortune 500 accounts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Selected work</div>
+      <h2>Product case studies</h2>
+      <p>Enterprise AI and platform work from my current and prior roles. Expand any case study for the problem, approach, and outcome — happy to go deeper on measurement in conversation.</p>
+    </div>
+
+    <div class="case-list">
+
+      <article class="case open" id="case-search">
+        <button class="case-head" onclick="toggleCase('case-search')">
+          <div class="case-head-text">
+            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">RAG & embeddings</span><span class="tag">Enterprise search</span></div>
+            <h3>Semantic search for the Slide Library</h3>
+            <p class="blurb">Made enterprise content findable by meaning, not just keywords — across a large, fast-growing presentation library.</p>
+          </div>
+          <span class="case-toggle">+</span>
+        </button>
+        <div class="case-body">
+          <div class="case-body-inner">
+            <div class="case-col">
+              <h4>Problem &amp; approach</h4>
+              <p>Keyword search on the Slide Library missed content that was relevant but didn't share exact wording with the query — a common failure mode in large presentation libraries.</p>
+              <ul>
+                <li>Defined metadata-driven semantic retrieval combining slide-level metadata, embeddings, and contextual signals.</li>
+                <li>Partnered with engineering on what signals to weight: title/metadata matches vs. embedding similarity vs. usage context.</li>
+              </ul>
+            </div>
+            <div class="case-col">
+              <h4>Reported outcome</h4>
+              <div class="metric-callout">
+                <div class="m-num">~30% relevance · ~40% faster discovery</div>
+                <div class="m-note">Measured via an A/B test (old lexical search vs. new retrieval) tracked in Mixpanel. Relevance was read off click-through on top results and a drop in reformulated/repeated searches — happy to walk through the exact event definitions.</div>
+              </div>
+              <p>This is the project I'd point to first for a search-focused role — it's the closest match to owning retrieval quality end to end.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="case-poster">
+        <button class="case-head" onclick="toggleCase('case-poster')">
+          <div class="case-head-text">
+            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">Internal tooling</span><span class="tag">Agents</span></div>
+            <h3>Poster Analytics Agent</h3>
+            <p class="blurb">An agent that automated recurring analytics reporting on poster and content performance.</p>
+          </div>
+          <span class="case-toggle">+</span>
+        </button>
+        <div class="case-body">
+          <div class="case-body-inner">
+            <div class="case-col">
+              <h4>Problem &amp; approach</h4>
+              <p>Pulling and summarizing poster/content performance data for roadmap decisions was a recurring, manual task competing with other product work.</p>
+              <ul>
+                <li>Built an agent to automate the recurring analysis and surface the insights directly.</li>
+                <li>Used the freed-up time to spend more cycles on roadmap decisions instead of data-pulling.</li>
+              </ul>
+            </div>
+            <div class="case-col">
+              <h4>Reported outcome</h4>
+              <div class="metric-callout">
+                <div class="m-num">Recurring analysis, automated</div>
+                <div class="m-note">Directionally reduced manual analytics time; I haven't pinned an exact % yet — ask me and I'll walk through specifics.</div>
+              </div>
+              <p>A good example of using agents to remove my own busywork, not just ship customer-facing features.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="case-smarttools">
+        <button class="case-head" onclick="toggleCase('case-smarttools')">
+          <div class="case-head-text">
+            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">0-to-1</span><span class="tag">Platform / API</span></div>
+            <h3>Smart Tools: an agentic automation platform</h3>
+            <p class="blurb">Took an API-first agentic automation platform from 0-to-1 to adoption across 10+ Fortune 500 accounts.</p>
+          </div>
+          <span class="case-toggle">+</span>
+        </button>
+        <div class="case-body">
+          <div class="case-body-inner">
+            <div class="case-col">
+              <h4>Problem &amp; approach</h4>
+              <p>Enterprise customers needed to connect Prezent's content workflows into their own systems — which meant building a real platform, not a single feature.</p>
+              <ul>
+                <li>Defined product vision and backlog from scratch for an API-first platform.</li>
+                <li>Shipped OAuth authentication, data modeling, and webhook-triggered integrations end to end.</li>
+                <li>Added 50+ MCP (Model Context Protocol) integrations, prioritized by analyzing real agent behavior and use cases.</li>
+              </ul>
+            </div>
+            <div class="case-col">
+              <h4>Reported outcome</h4>
+              <div class="metric-callout">
+                <div class="m-num">10+ Fortune 500 accounts</div>
+                <div class="m-note">Adoption across enterprise accounts after taking the platform from concept to shipped product.</div>
+              </div>
+              <p>Shows the platform/API side of my product work — auth, data modeling, integrations — alongside the AI-feature work above.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="case-rag">
+        <button class="case-head" onclick="toggleCase('case-rag')">
+          <div class="case-head-text">
+            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">RAG</span><span class="tag">Document intelligence</span></div>
+            <h3>RAG document-intelligence engine</h3>
+            <p class="blurb">A retrieval-augmented generation engine for extracting accurate answers out of very long enterprise documents.</p>
+          </div>
+          <span class="case-toggle">+</span>
+        </button>
+        <div class="case-body">
+          <div class="case-body-inner">
+            <div class="case-col">
+              <h4>Problem &amp; approach</h4>
+              <p>Clients needed reliable extraction from dense enterprise documents — often 1,000+ pages, including complex spreadsheet content — not just a generic chat-with-PDF experience.</p>
+              <ul>
+                <li>Gathered requirements directly from client use cases.</li>
+                <li>Architected a RAG-based document-intelligence engine, plus a dedicated Excel-reading capability.</li>
+              </ul>
+            </div>
+            <div class="case-col">
+              <h4>Reported outcome</h4>
+              <div class="metric-callout">
+                <div class="m-num">1,000+ page documents</div>
+                <div class="m-note">Improved extraction accuracy at this scale; the Excel-reading capability was specifically called out by clients.</div>
+              </div>
+              <p>A second, independent RAG system from the search work above — different retrieval problem, same underlying discipline.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="case-zaidyn">
+        <button class="case-head" onclick="toggleCase('case-zaidyn')">
+          <div class="case-head-text">
+            <div class="case-meta"><span class="tag">ZS Associates</span><span class="tag">Self-serve agent</span><span class="tag">Pharma / commercial analytics</span></div>
+            <h3>Self-service forecasting agent for ZAIDYN</h3>
+            <p class="blurb">Turned a manual, analyst-run forecasting process into a self-service product for pharma commercial teams.</p>
+          </div>
+          <span class="case-toggle">+</span>
+        </button>
+        <div class="case-body">
+          <div class="case-body-inner">
+            <div class="case-col">
+              <h4>Problem &amp; approach</h4>
+              <p>Drug forecasting at pharma clients depended on analysts manually combining 15+ inputs — prevalence, market share, compliance, and more — for every scenario.</p>
+              <ul>
+                <li>Defined and executed the product vision for a self-service forecasting agent.</li>
+                <li>Simplified onboarding so users could configure assumptions and build engagement plans themselves.</li>
+                <li>Led cross-functional delivery across product, engineering, analytics, and client teams via Agile/Scrum.</li>
+              </ul>
+            </div>
+            <div class="case-col">
+              <h4>Reported outcome</h4>
+              <div class="metric-callout">
+                <div class="m-num">1,500+ analyst hours saved / year</div>
+                <div class="m-note">Manual effort down ~60%; onboarding time down ~75%; user activation up 30%+; time-to-market down ~25%.</div>
+              </div>
+              <p>My deepest experience turning a manual, expert-run workflow into a self-serve product — a different domain (pharma commercial) from my AI-platform work, same underlying pattern.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="approach" style="background:var(--paper-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">How I work</div>
+      <h2>Shipping agent & search products, in order</h2>
+      <p>The same four-stage loop, whether the "product" is a customer-facing search feature or an internal agent.</p>
+    </div>
+    <div class="approach-list">
+      <div class="approach-step" data-step="1">
+        <h3>Observe the real workflow</h3>
+        <p>Watch how people actually search, retrieve, or do the manual task today — not how the process doc says they do it. This is where most of the real requirements come from.</p>
+      </div>
+      <div class="approach-step" data-step="2">
+        <h3>Design the retrieval or agent loop</h3>
+        <p>Decide what's retrieved, how it's ranked or grounded, and where a human needs to stay in the loop — before writing a single product spec.</p>
+      </div>
+      <div class="approach-step" data-step="3">
+        <h3>Ship with guardrails</h3>
+        <p>Evaluation criteria, failure-mode analysis, and human-oversight checkpoints go in at launch, not after something breaks in production.</p>
+      </div>
+      <div class="approach-step" data-step="4">
+        <h3>Measure, then iterate</h3>
+        <p>Relevance, latency, adoption, and the honest edge cases — tracked with the same rigor pre- and post-launch, usually via A/B tests where the stakes justify it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Toolkit</div>
+      <h2>Skills</h2>
+    </div>
+    <div class="skill-group">
+      <h4>AI & agentic product management</h4>
+      <div class="chip-row">
+        <span class="chip">RAG</span><span class="chip">Agentic workflows</span><span class="chip">Semantic search & retrieval</span>
+        <span class="chip">MCP integrations</span><span class="chip">Prompt engineering</span><span class="chip">Evaluation criteria & failure-mode analysis</span>
+        <span class="chip">Responsible AI / human oversight</span><span class="chip">0-to-1 prototyping (Claude Code, Lovable)</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Platform & data</h4>
+      <div class="chip-row">
+        <span class="chip">API-first architecture</span><span class="chip">OAuth / auth</span><span class="chip">Webhooks</span>
+        <span class="chip">Data modeling</span><span class="chip">Backlog ownership & grooming</span><span class="chip">Milestone-driven delivery</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Growth & analytics</h4>
+      <div class="chip-row">
+        <span class="chip">Activation / adoption / retention</span><span class="chip">A/B testing</span><span class="chip">OKRs</span>
+        <span class="chip">RICE / MoSCoW</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Product development & leadership</h4>
+      <div class="chip-row">
+        <span class="chip">Product discovery</span><span class="chip">Roadmap planning & prioritization</span><span class="chip">PRD-lite specs</span>
+        <span class="chip">Customer discovery</span><span class="chip">Competitive analysis</span><span class="chip">GTM strategy</span>
+        <span class="chip">Agile/Scrum</span><span class="chip">Cross-functional & CXO alignment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="background" style="background:var(--paper-raised); border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Background</div>
+      <h2>Where this experience comes from</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Sep 2024 — Present</div>
+        <h3>Product Manager</h3>
+        <div class="tl-org">Prezent AI · Remote</div>
+        <p class="desc">Agentic automation, enterprise search, and RAG document intelligence for a B2B SaaS platform used by Fortune 500 accounts.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2022 — Aug 2024</div>
+        <h3>Associate Consultant, Product and Strategy</h3>
+        <div class="tl-org">ZS Associates · Pune, India</div>
+        <p class="desc">Owned product vision for ZAIDYN's self-service drug forecasting agent, used by pharma commercial teams.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov 2020 — Feb 2022</div>
+        <h3>Manager, Product Development</h3>
+        <div class="tl-org">Aditya Birla Capital · Mumbai, India</div>
+        <p class="desc">Built a Pan-India incentive automation product and a data-driven insurance recommendation engine.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jul 2016 — Oct 2018</div>
+        <h3>Software Engineer</h3>
+        <div class="tl-org">John Deere / KocharTech · Pune, India</div>
+        <p class="desc">The engineering foundation behind how I work with platform and API product today.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2019 — 2020</div>
+        <h3>Post Graduate Program in Management, Marketing & Analytics</h3>
+        <div class="tl-org">Great Lakes Institute of Management, Gurgaon</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2012 — 2016</div>
+        <h3>B.Tech, Computer Science</h3>
+        <div class="tl-org">Guru Nanak Dev University, Amritsar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Open to Product / Senior Product Manager roles in AI, search, and enterprise platforms.</h2>
+    <p>If you're hiring for a role where retrieval, agents, or enterprise AI matter, I'd like to talk.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:aayushmehan012@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/aayushmehan">LinkedIn</a>
+      <a class="btn btn-ghost" href="tel:+919501813420">+91 9501813420</a>
+    </div>
+    <div class="copyright">Aayush Mehan — Pune, India</div>
+  </div>
+</footer>
+
+<script>
+function toggleCase(id){
+  var el = document.getElementById(id);
+  var isOpen = el.classList.contains('open');
+  document.querySelectorAll('.case.open').forEach(function(c){
+    c.classList.remove('open');
+    c.querySelector('.case-toggle').textContent = '+';
+  });
+  if(!isOpen){
+    el.classList.add('open');
+    el.querySelector('.case-toggle').textContent = '+';
+  }
+}
+</script>
+
+</body>
+</html>

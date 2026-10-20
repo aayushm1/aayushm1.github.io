@@ -2,579 +2,1006 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aayush Mehan — AI Product Manager</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aayush Mehan: AI Product Manager. Signals into systems.</title>
+<meta name="description" content="Aayush Mehan, AI Product Manager. Case studies in APIs, agents, RAG, semantic search, forecasting and recommendation products.">
+<meta name="theme-color" content="#0F0D0B">
+<meta property="og:title" content="Aayush Mehan: AI Product Manager">
+<meta property="og:description" content="Case studies: Smart Tools APIs, RAG, semantic search, My Workspace, poster agents, forecasting and next-best recommendation.">
+<link rel="preload" href="fonts/ArchivoBlack.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F0D0B'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%23FF5B23'/%3E%3C/svg%3E">
 <style>
-  :root{
-    --ink:#0F1720;
-    --ink-soft:#2A3442;
-    --paper:#EEEDE7;
-    --paper-raised:#F8F7F3;
-    --amber:#D98E2B;
-    --amber-soft:#F2DDB3;
-    --teal:#1F6F63;
-    --muted:#5B6472;
-    --line:#D9D6CC;
-    --line-dark:#324055;
-    --maxw:860px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,h4{
-    font-family:'Space Grotesk', sans-serif;
-    margin:0;
-    color:inherit;
-    letter-spacing:-0.01em;
-  }
-  a{color:inherit;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
-  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+@font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ArchivoBlack.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/JetBrainsMono.woff2) format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:200 900;font-display:swap;src:url(fonts/SourceSerif4.woff2) format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/SourceSerif4-Italic.woff2) format('woff2')}
 
-  /* ---------- NAV ---------- */
-  nav{
-    position:sticky; top:0; z-index:40;
-    background:rgba(238,237,231,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .nav-name{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px;}
-  .nav-links{display:flex; gap:26px; font-size:14px; color:var(--muted);}
-  .nav-links a{text-decoration:none; transition:color .15s;}
-  .nav-links a:hover{color:var(--ink);}
-  .nav-cta{
-    font-size:14px; font-weight:500; padding:8px 16px;
-    border:1px solid var(--ink); border-radius:3px;
-    text-decoration:none; white-space:nowrap;
-  }
-  .nav-cta:hover{background:var(--ink); color:var(--paper);}
+:root{
+  --ink:#0F0D0B; --ink-2:#17140F; --ink-3:#221D16;
+  --paper:#F2ECE2; --muted:#ABA295; --dim:#8E8578;
+  --line:rgba(242,236,226,.12); --line-2:rgba(242,236,226,.22);
+  --accent:#FF5B23; --accent-soft:rgba(255,91,35,.14); --on-accent:#160803;
+  --display:'Archivo Black', 'Arial Black', Impact, sans-serif;
+  --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --mono:'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --pad:clamp(20px, 5vw, 72px);
+  --max:1320px;
+  --e-out:cubic-bezier(.16,1,.3,1);
+  --e-io:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--serif);font-size:clamp(17px,1.15vw,19px);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:inherit}
+img,svg{display:block}
+h1,h2,h3,h4{margin:0;font-weight:400}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.skip{position:absolute;left:-999px;top:12px;z-index:200;background:var(--accent);color:var(--on-accent);padding:10px 16px;font-family:var(--mono);font-size:13px;border-radius:6px}
+.skip:focus{left:12px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-  /* ---------- HERO ---------- */
-  header.hero{
-    background:var(--ink); color:var(--paper-raised);
-    padding:88px 0 56px;
-  }
-  .eyebrow-line{
-    font-size:14px; color:var(--amber-soft); margin-bottom:22px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow-line .dot{width:7px;height:7px;border-radius:50%;background:var(--amber); flex:none;}
-  h1.display{
-    font-size:clamp(34px, 5vw, 50px);
-    line-height:1.08;
-    font-weight:600;
-    max-width:11.5ch;
-    margin-bottom:22px;
-  }
-  .hero-sub{
-    max-width:56ch; color:#C7CCD6; font-size:17.5px; margin-bottom:34px;
-  }
-  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:54px;}
-  .btn{
-    font-size:14.5px; font-weight:500; padding:11px 20px;
-    border-radius:3px; text-decoration:none; display:inline-block;
-    transition:transform .15s ease, background .15s ease;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--amber); color:var(--ink);}
-  .btn-primary:hover{background:#E6A149;}
-  .btn-ghost{border:1px solid var(--line-dark); color:var(--paper-raised);}
-  .btn-ghost:hover{border-color:var(--paper-raised);}
+/* grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:150;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  .stat-row{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-    background:var(--line-dark); border:1px solid var(--line-dark);
-    border-radius:4px; overflow:hidden;
-  }
-  .stat{background:#151F2C; padding:20px 18px;}
-  .stat .num{font-family:'Space Grotesk',sans-serif; font-size:23px; font-weight:600; color:var(--paper-raised);}
-  .stat .label{font-size:12.5px; color:#8E96A3; margin-top:6px; line-height:1.4;}
+/* ---------- nav ---------- */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--accent);z-index:120}
+nav.top{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);transition:background .4s, padding .4s, border-color .4s;border-bottom:1px solid transparent}
+nav.top.solid{background:rgba(15,13,11,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-top:12px;padding-bottom:12px;border-color:var(--line)}
+.logo{font-family:var(--display);font-size:20px;text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:.02em}
+.logo i{width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block;box-shadow:0 0 0 0 var(--accent);animation:ping 2.4s var(--e-out) infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,91,35,.6)}80%,100%{box-shadow:0 0 0 12px rgba(255,91,35,0)}}
+.nav-links{display:flex;gap:clamp(14px,2.4vw,34px);align-items:center}
+.nav-links a{text-decoration:none;color:var(--muted);position:relative;padding:4px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:100% 50%;transition:transform .45s var(--e-out)}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:0 50%}
+.nav-links .cta{color:var(--on-accent);background:var(--accent);padding:9px 16px;border-radius:999px}
+.nav-links .cta::after{display:none}
+.nav-links .cta:hover{color:var(--on-accent)}
+@media (max-width:720px){.nav-links a:not(.cta){display:none}}
 
-  @media(max-width:640px){
-    .stat-row{grid-template-columns:repeat(2,1fr);}
-    .nav-links{display:none;}
-  }
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 0;overflow:hidden;isolation:isolate}
+#flow{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 66% 38%, rgba(255,91,35,.10), transparent 70%), linear-gradient(to bottom, transparent 55%, var(--ink) 98%);pointer-events:none}
+.hero-legend{position:absolute;top:clamp(92px,13vh,140px);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;color:var(--dim);pointer-events:none}
+.hero-legend span b{color:var(--accent);font-weight:400}
+.status{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:999px;padding:7px 14px 7px 10px;color:var(--muted);background:rgba(15,13,11,.55);backdrop-filter:blur(6px);margin-bottom:22px}
+.status i{width:8px;height:8px;border-radius:50%;background:#58D68D;box-shadow:0 0 10px #58D68D}
+.name{font-family:var(--display);font-size:clamp(64px,15.5vw,248px);line-height:.84;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 0 -.04em}
+.name .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.name .ln + .ln{color:transparent;-webkit-text-stroke:2px var(--paper)}
+.name .ch{display:inline-block;transform:translateY(105%);animation:rise 1.1s var(--e-out) forwards;animation-delay:calc(.25s + var(--i) * 55ms)}
+.name .ln + .ln .ch{animation-delay:calc(.55s + var(--i) * 55ms)}
+@keyframes rise{to{transform:none}}
+.hero-foot{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end;padding:clamp(28px,4vw,48px) 0 clamp(28px,4vw,44px);border-top:1px solid var(--line);margin-top:clamp(20px,3vw,36px)}
+.lede{font-size:clamp(21px,2vw,30px);line-height:1.3;max-width:30ch;opacity:0;animation:fade 1s var(--e-out) 1.2s forwards}
+.lede em{color:var(--accent)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;opacity:0;animation:fade 1s var(--e-out) 1.4s forwards}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (max-width:820px){.hero-foot{grid-template-columns:1fr}.hero-cta{justify-content:flex-start}.hero-legend{display:none}}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:15px 22px;border-radius:999px;border:1px solid var(--line-2);transition:background .3s, color .3s, border-color .3s;will-change:transform}
+.btn:hover{border-color:var(--paper)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.solid:hover{background:var(--paper);border-color:var(--paper)}
+.btn .arr{transition:transform .4s var(--e-out)}
+.btn:hover .arr{transform:translateX(4px)}
+.scroll-cue{position:absolute;right:var(--pad);bottom:clamp(170px,22vh,230px);writing-mode:vertical-rl;color:var(--dim);display:flex;gap:12px;align-items:center}
+.scroll-cue::after{content:"";width:1px;height:56px;background:linear-gradient(var(--accent),transparent);animation:drip 2s var(--e-io) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:820px){.scroll-cue{display:none}}
 
-  /* ---------- SECTION GENERIC ---------- */
-  section{padding:68px 0;}
-  .section-head{margin-bottom:40px; max-width:62ch;}
-  .section-head .kicker{color:var(--teal); font-weight:500; font-size:14.5px; margin-bottom:10px;}
-  .section-head h2{font-size:28px; font-weight:600; margin-bottom:12px;}
-  .section-head p{color:var(--muted); font-size:15.5px;}
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:clamp(22px,3vw,40px) clamp(14px,2vw,28px);border-right:1px solid var(--line);position:relative;overflow:hidden}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(34px,4.4vw,68px);line-height:1;letter-spacing:-.02em}
+.stat b .u{color:var(--accent)}
+.stat > span{display:block;margin-top:10px;color:var(--muted);font-size:15px;line-height:1.35}
+.stat::before{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--e-out)}
+.stat:hover::before{transform:scaleX(1)}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{border-bottom:1px solid var(--line)}.stat:nth-child(2n){border-right:0}.stat:last-child{grid-column:1/-1;border-bottom:0}}
 
-  /* ---------- PILLARS ---------- */
-  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-  .pillar{border-left:3px solid var(--amber); padding-left:18px;}
-  .pillar h3{font-size:17px; margin-bottom:8px;}
-  .pillar p{color:var(--muted); font-size:14.5px; margin:0;}
-  @media(max-width:700px){.pillars{grid-template-columns:1fr;}}
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);padding:18px 0;background:var(--ink-2)}
+.marquee-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee span{font-family:var(--display);font-size:clamp(22px,2.6vw,38px);text-transform:uppercase;padding-right:.6em;white-space:nowrap;color:var(--paper)}
+.marquee span.o{color:transparent;-webkit-text-stroke:1px var(--muted)}
+.marquee span.d{color:var(--accent)}
+@keyframes marq{to{transform:translateX(-50%)}}
 
-  /* ---------- CASE STUDIES ---------- */
-  .case{
-    border-top:1px solid var(--line);
-    padding:26px 0;
-  }
-  .case:last-child{border-bottom:1px solid var(--line);}
-  .case-head{
-    display:flex; align-items:flex-start; justify-content:space-between;
-    gap:20px; cursor:pointer; background:none; border:none; width:100%;
-    text-align:left; font:inherit; color:inherit; padding:0;
-  }
-  .case-head-text h3{font-size:19px; font-weight:600; margin-bottom:6px;}
-  .case-meta{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;}
-  .tag{
-    font-size:12px; color:var(--muted); background:var(--paper-raised);
-    border:1px solid var(--line); padding:3px 9px; border-radius:20px;
-  }
-  .case-head p.blurb{color:var(--muted); font-size:14.5px; max-width:56ch; margin:0;}
-  .case-toggle{
-    flex:none; width:30px; height:30px; border-radius:50%;
-    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
-    font-size:16px; color:var(--ink); transition:transform .2s ease, background .2s ease;
-    margin-top:2px;
-  }
-  .case.open .case-toggle{transform:rotate(45deg); background:var(--ink); color:var(--paper);}
-  .case-body{
-    max-height:0; overflow:hidden; transition:max-height .28s ease;
-  }
-  .case.open .case-body{max-height:900px;}
-  .case-body-inner{padding-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:28px;}
-  @media(max-width:700px){.case-body-inner{grid-template-columns:1fr;}}
-  .case-col h4{font-size:13px; text-transform:none; color:var(--teal); margin-bottom:8px; font-weight:600;}
-  .case-col p, .case-col li{font-size:14.5px; color:var(--ink-soft); margin:0 0 6px;}
-  .case-col ul{margin:0; padding-left:18px;}
-  .metric-callout{
-    background:var(--paper-raised); border:1px solid var(--line); border-radius:4px;
-    padding:14px 16px; margin-bottom:14px;
-  }
-  .metric-callout .m-num{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:20px;}
-  .metric-callout .m-note{font-size:13px; color:var(--muted); margin-top:4px;}
+/* ---------- section heads ---------- */
+section{position:relative}
+.sec{padding-top:clamp(80px,11vw,170px);padding-bottom:clamp(40px,5vw,70px)}
+.eyebrow{color:var(--accent);display:flex;gap:14px;align-items:center;margin-bottom:22px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--accent)}
+.h2{font-family:var(--display);font-size:clamp(44px,7.4vw,124px);line-height:.92;letter-spacing:-.025em;text-transform:uppercase}
+.h2 em, .case-title em, .contact-big em{font-family:var(--serif);font-style:italic;text-transform:none;letter-spacing:-.02em;color:var(--accent);font-weight:400}
+.sec-intro{max-width:56ch;color:var(--muted);margin-top:26px;font-size:clamp(17px,1.3vw,21px)}
 
-  /* ---------- APPROACH ---------- */
-  .approach-list{position:relative; padding-left:34px;}
-  .approach-list::before{
-    content:''; position:absolute; left:10px; top:6px; bottom:6px; width:1px;
-    background:var(--line);
-  }
-  .approach-step{position:relative; padding-bottom:34px;}
-  .approach-step:last-child{padding-bottom:0;}
-  .approach-step::before{
-    content:attr(data-step); position:absolute; left:-34px; top:0;
-    width:22px; height:22px; border-radius:50%; background:var(--ink); color:var(--paper);
-    font-size:11px; font-family:'Space Grotesk',sans-serif; font-weight:600;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .approach-step h3{font-size:17px; margin-bottom:6px;}
-  .approach-step p{color:var(--muted); font-size:14.5px; margin:0; max-width:58ch;}
+/* word mask reveal */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em;margin-bottom:-.06em}
+.split .w > span{display:inline-block;transform:translateY(110%);transition:transform 1s var(--e-out);transition-delay:calc(var(--i) * 60ms)}
+.split.in .w > span{transform:none}
 
-  /* ---------- SKILLS ---------- */
-  .skill-group{margin-bottom:22px;}
-  .skill-group h4{font-size:14.5px; color:var(--teal); margin-bottom:10px; font-weight:600;}
-  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .chip{
-    font-size:13px; padding:6px 12px; border-radius:20px;
-    background:var(--paper-raised); border:1px solid var(--line); color:var(--ink-soft);
-  }
+/* generic reveals */
+.js [data-r]{opacity:0;transition:opacity .9s var(--e-out), transform 1s var(--e-out), clip-path 1.1s var(--e-io);transition-delay:var(--d,0s)}
+.js [data-r="up"]{transform:translateY(40px)}
+.js [data-r="left"]{transform:translateX(-50px)}
+.js [data-r="right"]{transform:translateX(50px)}
+.js [data-r="scale"]{transform:scale(.94)}
+.js [data-r="wipe"]{opacity:1;clip-path:inset(0 100% 0 0)}
+.js [data-r].in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
 
-  /* ---------- BACKGROUND / TIMELINE ---------- */
-  .timeline{position:relative; padding-left:28px;}
-  .timeline::before{content:''; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line);}
-  .tl-item{position:relative; padding-bottom:28px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:''; position:absolute; left:-28px; top:4px; width:9px; height:9px;
-    border-radius:50%; background:var(--amber); border:2px solid var(--paper);
-    box-shadow:0 0 0 1px var(--line);
-  }
-  .tl-item .tl-date{font-size:13px; color:var(--muted); margin-bottom:4px;}
-  .tl-item h3{font-size:16.5px; margin-bottom:3px;}
-  .tl-item .tl-org{font-size:14px; color:var(--teal); margin-bottom:6px;}
-  .tl-item p.desc{font-size:14px; color:var(--muted); margin:0; max-width:58ch;}
+/* ---------- system map (index) ---------- */
+.map{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(40px,5vw,70px)}
+.tile{grid-column:span 3;background:var(--ink);padding:22px 22px 24px;text-decoration:none;position:relative;overflow:hidden;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;--mx:50%;--my:50%}
+.tile.w4{grid-column:span 4}.tile.w5{grid-column:span 5}.tile.w6{grid-column:span 6}.tile.w2{grid-column:span 2}.tile.w7{grid-column:span 7}
+.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx) var(--my), rgba(255,91,35,.22), transparent 60%);opacity:0;transition:opacity .35s}
+.tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;background:var(--accent);transform:scaleY(0);transform-origin:50% 100%;transition:transform .55s var(--e-out);z-index:0}
+.tile:hover::before{opacity:1}
+.tile:hover::after,.tile:focus-visible::after{transform:scaleY(1)}
+.tile > *{position:relative;z-index:1;transition:color .35s}
+.tile:hover > *, .tile:focus-visible > *{color:var(--on-accent)!important}
+.tile .tn{color:var(--dim);display:flex;justify-content:space-between}
+.tile .tt,.tile .tm{display:block}
+.tile .tt{font-family:var(--display);font-size:clamp(22px,2vw,30px);line-height:1;text-transform:uppercase}
+.tile .tm{color:var(--muted);font-size:15px;line-height:1.35;margin-top:8px}
+.tile .tm b{color:var(--accent);font-weight:600}
+.tile:hover .tm b{color:var(--on-accent)}
+@media (max-width:1000px){.tile,.tile.w4,.tile.w5,.tile.w2,.tile.w7{grid-column:span 6}.tile.w6{grid-column:span 12}}
+@media (max-width:560px){.tile,.tile.w4,.tile.w5,.tile.w2,.tile.w6,.tile.w7{grid-column:span 12;min-height:0}}
 
-  /* ---------- CONTACT ---------- */
-  footer{background:var(--ink); color:var(--paper-raised); padding:70px 0 40px;}
-  footer h2{font-size:26px; margin-bottom:16px; max-width:20ch;}
-  footer p{color:#B9BFC9; max-width:48ch; margin-bottom:28px; font-size:15.5px;}
-  .contact-links{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:46px;}
-  .copyright{font-size:13px; color:#6B7585; border-top:1px solid var(--line-dark); padding-top:22px;}
+/* ---------- case studies ---------- */
+.cases{counter-reset:case}
+.case{padding:clamp(70px,9vw,140px) 0;border-top:1px solid var(--line);position:relative}
+.case-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 clamp(18px,3vw,44px);align-items:start}
+.case-no{font-family:var(--display);font-size:clamp(70px,11vw,180px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--line-2);letter-spacing:-.04em;transition:-webkit-text-stroke-color .6s}
+.case.active .case-no{-webkit-text-stroke-color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line-2);color:var(--muted);padding:5px 10px;border-radius:999px}
+.tag.co{border-color:var(--accent);color:var(--accent)}
+.case-title{font-family:var(--display);font-size:clamp(38px,5.6vw,92px);line-height:.94;letter-spacing:-.025em;text-transform:uppercase}
+.case-lede{margin-top:20px;max-width:62ch;font-size:clamp(19px,1.6vw,24px);line-height:1.4;color:var(--paper)}
+@media (max-width:640px){.case-head{grid-template-columns:1fr}.case-no{font-size:84px;margin-bottom:16px}}
+
+.diagram{margin:clamp(36px,5vw,64px) 0 0;border:1px solid var(--line);border-radius:18px;background:
+  radial-gradient(circle at 1px 1px, rgba(242,236,226,.07) 1px, transparent 0) 0 0/22px 22px, var(--ink-2);padding:clamp(14px,2.4vw,34px);position:relative;overflow:hidden}
+.diagram figcaption{display:flex;justify-content:space-between;gap:12px;color:var(--dim);margin-bottom:clamp(10px,1.6vw,20px)}
+.diagram figcaption .live{color:var(--accent);display:flex;align-items:center;gap:8px}
+.diagram figcaption .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+.dg{width:100%;height:auto;overflow:visible}
+.dg .st{font-family:var(--mono);fill:var(--dim);letter-spacing:.12em}
+.dg .edge{fill:none;stroke:var(--line-2);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s var(--e-io);transition-delay:var(--d)}
+.dg .node{opacity:0;transform:translateY(10px) scale(.96);transform-box:fill-box;transform-origin:center;transition:opacity .7s var(--e-out), transform .8s var(--e-out);transition-delay:var(--d)}
+.dg .node rect{fill:var(--ink-3);stroke:var(--line-2);stroke-width:1;transition:fill .3s, stroke .3s}
+.dg .node text{font-family:var(--mono);fill:var(--paper)}
+.dg .node.core rect{fill:var(--accent);stroke:var(--accent)}
+.dg .node.core text{fill:var(--on-accent);font-weight:700}
+.dg .node:hover rect{stroke:var(--accent)}
+.dg .halo{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.dg .pk{fill:var(--accent);opacity:0;transition:opacity .6s;transition-delay:var(--d)}
+.dg.on .edge{stroke-dashoffset:0}
+.dg.on .node{opacity:1;transform:none}
+.dg.on .pk{opacity:1}
+.dg.on .halo{animation:halo 2.6s var(--e-out) infinite;animation-delay:1.6s}
+@keyframes halo{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.25,1.6)}}
+
+.case-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(28px,3.4vw,56px) clamp(24px,3vw,48px);margin-top:clamp(40px,5vw,72px)}
+.blk{grid-column:span 4}
+.blk.wide{grid-column:span 8}
+.blk h4{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.blk h4::before{content:attr(data-n);color:var(--dim)}
+.blk p, .blk li{color:#D9D2C6}
+.blk ul{margin:0;padding:0;list-style:none}
+.blk li{position:relative;padding-left:22px;margin-bottom:10px}
+.blk li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1px;background:var(--accent)}
+@media (max-width:900px){.blk,.blk.wide{grid-column:span 12}}
+
+.impact{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.impact .m{padding:clamp(20px,2.6vw,34px);border-right:1px solid var(--line);position:relative;background:linear-gradient(180deg, rgba(255,91,35,.06), transparent 70%)}
+.impact .m:last-child{border-right:0}
+.impact .m b{display:block;white-space:nowrap;font-family:var(--display);font-weight:400;font-size:clamp(44px,5.2vw,84px);line-height:.95;letter-spacing:-.03em;color:var(--paper)}
+.impact .m b .u{color:var(--accent)}
+.impact .m > span{display:block;margin-top:10px;color:var(--muted);font-size:15.5px;line-height:1.35;max-width:26ch}
+.impact.many{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.impact.many .m b{font-size:clamp(38px,3.6vw,58px)}
+.impact .m.q b{white-space:normal;font-family:var(--serif);font-style:italic;font-size:clamp(28px,2.6vw,40px);line-height:1.1;letter-spacing:-.01em}
+.impact .m .arrow{display:inline-block;color:var(--accent);font-family:var(--mono);font-size:.38em;vertical-align:.9em;margin-left:.15em}
+@media (max-width:640px){.impact .m{border-right:0;border-bottom:1px solid var(--line)}.impact .m:last-child{border-bottom:0}}
+.award{display:inline-flex;align-items:center;gap:14px}
+.seal{width:clamp(66px,6vw,90px);height:clamp(66px,6vw,90px);flex:none}
+.seal .ring{animation:spin 18s linear infinite;transform-origin:50% 50%}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* HUD */
+.hud{position:fixed;right:var(--pad);bottom:22px;z-index:90;display:flex;align-items:center;gap:12px;padding:9px 16px 9px 10px;border:1px solid var(--line-2);border-radius:999px;background:rgba(15,13,11,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--muted);transform:translateY(calc(100% + 40px));transition:transform .6s var(--e-out);max-width:calc(100vw - 2 * var(--pad))}
+.hud.show{transform:none}
+.hud .hn{background:var(--accent);color:var(--on-accent);border-radius:999px;padding:3px 9px;font-weight:700}
+.hud .ht{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--paper)}
+.hud .bar{width:60px;height:2px;background:var(--line-2);position:relative;flex:none}
+.hud .bar i{position:absolute;inset:0;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);transition:transform .5s var(--e-out)}
+@media (max-width:560px){.hud .bar{display:none}}
+
+/* ---------- approach ---------- */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:clamp(40px,5vw,70px);border-top:1px solid var(--line);position:relative}
+.steps::before{content:"";position:absolute;top:-1px;left:0;height:2px;width:100%;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.step{padding:30px clamp(14px,1.6vw,26px) 10px 0;position:relative}
+.step .sn{font-family:var(--display);font-size:clamp(44px,4vw,64px);line-height:1;color:var(--accent)}
+.step h3{font-family:var(--display);text-transform:uppercase;font-size:clamp(19px,1.5vw,23px);line-height:1.1;margin:16px 0 12px}
+.step p{color:var(--muted);font-size:16px}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* ---------- timeline ---------- */
+.tl{margin-top:clamp(40px,5vw,70px);position:relative}
+.role{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) minmax(0,1.1fr);gap:clamp(16px,3vw,48px);padding:clamp(26px,3vw,40px) 0;border-top:1px solid var(--line);position:relative;transition:background .4s}
+.role:hover{background:linear-gradient(90deg, var(--accent-soft), transparent 70%)}
+.role .when{color:var(--dim)}
+.role h3{font-family:var(--display);text-transform:uppercase;font-size:clamp(24px,2.4vw,38px);line-height:1}
+.role .org{color:var(--accent);margin-top:10px}
+.role ul{margin:0;padding:0;list-style:none;color:#D9D2C6;font-size:16.5px}
+.role li{padding-left:20px;position:relative;margin-bottom:8px}
+.role li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:13px;top:.2em}
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
+.edu div{background:var(--ink);padding:24px}
+.edu b{display:block;font-family:var(--serif);font-weight:600;font-size:19px;margin:8px 0 4px}
+.edu span{color:var(--muted);font-size:15.5px}
+@media (max-width:820px){.role{grid-template-columns:1fr}.edu{grid-template-columns:1fr}}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,4vw,60px);margin-top:clamp(40px,5vw,70px)}
+.skills h3{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:13px;border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;color:#D9D2C6;transition:background .25s,color .25s,border-color .25s,transform .25s var(--e-out)}
+.chip:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent);transform:translateY(-3px) rotate(-1.5deg)}
+@media (max-width:820px){.skills{grid-template-columns:1fr}}
+
+/* ---------- contact ---------- */
+.contact{padding-top:clamp(100px,14vw,220px);padding-bottom:40px;overflow:hidden}
+.contact-big{font-family:var(--display);font-size:clamp(52px,10.5vw,190px);line-height:.88;letter-spacing:-.03em;text-transform:uppercase}
+.contact-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:clamp(36px,4vw,60px)}
+.mail{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3.2vw,48px);text-decoration:none;border-bottom:2px solid var(--accent);display:inline-block;margin-top:36px;transition:color .3s;word-break:break-all}
+.mail:hover{color:var(--accent)}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:28px 0 40px;border-top:1px solid var(--line);margin-top:clamp(70px,9vw,140px);color:var(--dim)}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
+  .name .ch{transform:none}
+  .lede,.hero-cta{opacity:1}
+  .marquee-track{animation:none}
+  .js [data-r]{opacity:1;transform:none;clip-path:none}
+  .split .w > span{transform:none}
+  .dg .edge{stroke-dashoffset:0}.dg .node{opacity:1;transform:none}.dg .pk{display:none}
+  .seal .ring{animation:none}
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#work">Skip to case studies</a>
+<div class="progress" aria-hidden="true"></div>
 
-<nav>
-  <div class="nav-inner">
-    <div class="nav-name">Aayush Mehan</div>
-    <div class="nav-links">
-      <a href="#work">Case studies</a>
-      <a href="#approach">Approach</a>
-      <a href="#background">Background</a>
-    </div>
-    <a class="nav-cta" href="#contact">Get in touch</a>
+<nav class="top" aria-label="Primary">
+  <a class="logo" href="#top" aria-label="Aayush Mehan, home"><i aria-hidden="true"></i>AM</a>
+  <div class="nav-links mono">
+    <a href="#work">Work</a>
+    <a href="#approach">Approach</a>
+    <a href="#background">Background</a>
+    <a class="cta" href="#contact">Contact</a>
   </div>
 </nav>
 
+<main id="top">
+<!-- ================= HERO ================= -->
 <header class="hero">
+  <canvas id="flow" aria-hidden="true"></canvas>
+  <div class="hero-legend mono" aria-hidden="true">
+    <span>Input // messy enterprise signals</span>
+    <span><b>●</b> Output // shipped systems</span>
+  </div>
   <div class="wrap">
-    <div class="eyebrow-line"><span class="dot"></span> AI Product Manager · Agentic platforms & enterprise search</div>
-    <h1 class="display">Building the agents and search systems that make enterprise knowledge findable.</h1>
-    <p class="hero-sub">I'm a product manager with 8+ years in B2B SaaS, the last two spent shipping AI agents, retrieval-augmented systems, and enterprise search inside Prezent AI's platform. I care about products that are fast, grounded, and trustworthy — not just fluent.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="#work">View case studies</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
-    </div>
-    <div class="stat-row">
-      <div class="stat"><div class="num">8+ yrs</div><div class="label">in B2B SaaS product management</div></div>
-      <div class="stat"><div class="num">10+</div><div class="label">Fortune 500 accounts on a platform I own</div></div>
-      <div class="stat"><div class="num">~30%</div><div class="label">search relevance lift, A/B tested</div></div>
-      <div class="stat"><div class="num">1,500+</div><div class="label">analyst hours saved annually (ZAIDYN)</div></div>
+    <div class="status mono"><i aria-hidden="true"></i>Product Manager @ Prezent AI</div>
+    <h1 class="name" aria-label="Aayush Mehan">
+      <span class="ln" aria-hidden="true">Aayush</span>
+      <span class="ln" aria-hidden="true">Mehan</span>
+    </h1>
+    <div class="hero-foot">
+      <p class="lede">AI Product Manager. 8+ years turning messy enterprise workflows into <em>agents, APIs and search</em> that teams actually adopt.</p>
+      <div class="hero-cta">
+        <a class="btn solid mag" href="#work">See the case studies <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn mag" href="https://linkedin.com/in/aayushmehan" target="_blank" rel="noopener">LinkedIn <span class="arr" aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </div>
+  <div class="scroll-cue mono" aria-hidden="true">Scroll</div>
 </header>
 
-<section id="pillars">
-  <div class="wrap">
-    <div class="pillars">
-      <div class="pillar">
-        <h3>Agentic & AI products</h3>
-        <p>Shipping LLM-driven agents end to end — content automation, analytics agents, and document intelligence built on RAG.</p>
-      </div>
-      <div class="pillar">
-        <h3>Enterprise search & retrieval</h3>
-        <p>Metadata, embeddings, and relevance tuning for search that enterprise users actually trust.</p>
-      </div>
-      <div class="pillar">
-        <h3>Platform & integration strategy</h3>
-        <p>API-first architecture, auth, and webhook-driven integrations that scale to Fortune 500 accounts.</p>
-      </div>
+<!-- ================= STATS ================= -->
+<section aria-label="Highlights">
+  <div class="stats">
+    <div class="stat"><b><span data-count="8">8</span><span class="u">+</span></b><span>years in B2B SaaS product</span></div>
+    <div class="stat"><b><span data-count="10">10</span><span class="u">+</span></b><span>Fortune 500 accounts on Smart Tools</span></div>
+    <div class="stat"><b><span data-count="50">50</span><span class="u">+</span></b><span>MCP app integrations added</span></div>
+    <div class="stat"><b><span data-count="1500">1,500</span><span class="u">+</span></b><span>analyst hours saved a year (ZAIDYN)</span></div>
+    <div class="stat"><b>CEO<span class="u">.</span></b><span>Award winner for My Workspace</span></div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>RAG</span><span class="d">✦</span><span class="o">Agentic workflows</span><span class="d">✦</span><span>Semantic search</span><span class="d">✦</span><span class="o">MCP</span><span class="d">✦</span><span>API-first</span><span class="d">✦</span><span class="o">OAuth + webhooks</span><span class="d">✦</span><span>Evals &amp; guardrails</span><span class="d">✦</span><span class="o">0-to-1</span><span class="d">✦</span>
+      <span>RAG</span><span class="d">✦</span><span class="o">Agentic workflows</span><span class="d">✦</span><span>Semantic search</span><span class="d">✦</span><span class="o">MCP</span><span class="d">✦</span><span>API-first</span><span class="d">✦</span><span class="o">OAuth + webhooks</span><span class="d">✦</span><span>Evals &amp; guardrails</span><span class="d">✦</span><span class="o">0-to-1</span><span class="d">✦</span>
     </div>
   </div>
 </section>
 
-<section id="work">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Selected work</div>
-      <h2>Product case studies</h2>
-      <p>Enterprise AI and platform work from my current and prior roles. Expand any case study for the problem, approach, and outcome — happy to go deeper on measurement in conversation.</p>
+<!-- ================= INDEX ================= -->
+<section id="work" class="wrap sec" aria-labelledby="work-h">
+  <div class="eyebrow mono">01 · Selected work</div>
+  <h2 class="h2 split" id="work-h">Signals in. <em>Systems</em> out.</h2>
+  <p class="sec-intro" data-r="up">Twelve products across Prezent AI, ZS Associates and Aditya Birla Capital. Each case study maps the system as a live pipeline: what came in, what I built, and what changed.</p>
+
+  <nav class="map" aria-label="Case study index">
+    <a class="tile w5" href="#c-apis" data-r="up"><span class="tn mono"><span>01</span><span>Prezent AI</span></span><span><span class="tt">APIs · Smart Tools</span><span class="tm block"><b>0→1</b> to <b>10+</b> Fortune 500 accounts</span></span></a>
+    <a class="tile w4" href="#c-presentations" data-r="up" style="--d:.05s"><span class="tn mono"><span>02</span><span>Prezent AI</span></span><span><span class="tt">Presentations</span><span class="tm"><b>10%</b> less manual effort</span></span></a>
+    <a class="tile" href="#c-poster-gen" data-r="up" style="--d:.1s"><span class="tn mono"><span>03</span><span>Prezent AI</span></span><span><span class="tt">Poster generation</span><span class="tm">Brief to layout</span></span></a>
+    <a class="tile" href="#c-poster-agents" data-r="up"><span class="tn mono"><span>04</span><span>Prezent AI</span></span><span><span class="tt">Poster agents</span><span class="tm">Analytics on autopilot</span></span></a>
+    <a class="tile w6" href="#c-workspace" data-r="up" style="--d:.05s"><span class="tn mono"><span>05</span><span>Prezent AI</span></span><span><span class="tt">My Workspace</span><span class="tm"><b>CEO Award</b> winning GenAI workspace</span></span></a>
+    <a class="tile" href="#c-search" data-r="up" style="--d:.1s"><span class="tn mono"><span>06</span><span>Prezent AI</span></span><span><span class="tt">Search</span><span class="tm"><b>~30%</b> relevance lift</span></span></a>
+    <a class="tile w4" href="#c-rag" data-r="up"><span class="tn mono"><span>07</span><span>Prezent AI</span></span><span><span class="tt">RAG</span><span class="tm"><b>1,000+</b> page documents</span></span></a>
+    <a class="tile w4" href="#c-excel" data-r="up" style="--d:.05s"><span class="tn mono"><span>08</span><span>Prezent AI</span></span><span><span class="tt">Excel reading</span><span class="tm">Called out by clients</span></span></a>
+    <a class="tile w4" href="#c-support" data-r="up" style="--d:.1s"><span class="tn mono"><span>09</span><span>Prezent AI</span></span><span><span class="tt">Support agent</span><span class="tm">KB chatbot + Jira escalation</span></span></a>
+    <a class="tile w5" href="#c-forecast" data-r="up"><span class="tn mono"><span>10</span><span>ZS Associates</span></span><span><span class="tt">Forecasting agents</span><span class="tm"><b>1,500+</b> analyst hours / year</span></span></a>
+    <a class="tile w4" href="#c-nba" data-r="up" style="--d:.05s"><span class="tn mono"><span>11</span><span>Aditya Birla</span></span><span><span class="tt">Next best offer</span><span class="tm"><b>20%+</b> conversion</span></span></a>
+    <a class="tile" href="#c-incentive" data-r="up" style="--d:.1s"><span class="tn mono"><span>12</span><span>Aditya Birla</span></span><span><span class="tt">Incentive engine</span><span class="tm"><b>70%+</b> less processing</span></span></a>
+  </nav>
+</section>
+
+<!-- ================= CASES ================= -->
+<div class="cases wrap">
+
+<article class="case" id="c-apis" data-title="APIs · Smart Tools">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">01</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">Platform / API</span><span class="tag">0-to-1</span><span class="tag">MCP</span></div>
+      <h3 class="case-title split">APIs: <em>Smart Tools</em></h3>
+      <p class="case-lede" data-r="up">An API-first agentic automation platform, taken from zero to adoption across 10+ Fortune 500 accounts.</p>
     </div>
-
-    <div class="case-list">
-
-      <article class="case open" id="case-search">
-        <button class="case-head" onclick="toggleCase('case-search')">
-          <div class="case-head-text">
-            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">RAG & embeddings</span><span class="tag">Enterprise search</span></div>
-            <h3>Semantic search for the Slide Library</h3>
-            <p class="blurb">Made enterprise content findable by meaning, not just keywords — across a large, fast-growing presentation library.</p>
-          </div>
-          <span class="case-toggle">+</span>
-        </button>
-        <div class="case-body">
-          <div class="case-body-inner">
-            <div class="case-col">
-              <h4>Problem &amp; approach</h4>
-              <p>Keyword search on the Slide Library missed content that was relevant but didn't share exact wording with the query — a common failure mode in large presentation libraries.</p>
-              <ul>
-                <li>Defined metadata-driven semantic retrieval combining slide-level metadata, embeddings, and contextual signals.</li>
-                <li>Partnered with engineering on what signals to weight: title/metadata matches vs. embedding similarity vs. usage context.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <h4>Reported outcome</h4>
-              <div class="metric-callout">
-                <div class="m-num">~30% relevance · ~40% faster discovery</div>
-                <div class="m-note">Measured via an A/B test (old lexical search vs. new retrieval) tracked in Mixpanel. Relevance was read off click-through on top results and a drop in reformulated/repeated searches — happy to walk through the exact event definitions.</div>
-              </div>
-              <p>This is the project I'd point to first for a search-focused role — it's the closest match to owning retrieval quality end to end.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" id="case-poster">
-        <button class="case-head" onclick="toggleCase('case-poster')">
-          <div class="case-head-text">
-            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">Internal tooling</span><span class="tag">Agents</span></div>
-            <h3>Poster Analytics Agent</h3>
-            <p class="blurb">An agent that automated recurring analytics reporting on poster and content performance.</p>
-          </div>
-          <span class="case-toggle">+</span>
-        </button>
-        <div class="case-body">
-          <div class="case-body-inner">
-            <div class="case-col">
-              <h4>Problem &amp; approach</h4>
-              <p>Pulling and summarizing poster/content performance data for roadmap decisions was a recurring, manual task competing with other product work.</p>
-              <ul>
-                <li>Built an agent to automate the recurring analysis and surface the insights directly.</li>
-                <li>Used the freed-up time to spend more cycles on roadmap decisions instead of data-pulling.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <h4>Reported outcome</h4>
-              <div class="metric-callout">
-                <div class="m-num">Recurring analysis, automated</div>
-                <div class="m-note">Directionally reduced manual analytics time; I haven't pinned an exact % yet — ask me and I'll walk through specifics.</div>
-              </div>
-              <p>A good example of using agents to remove my own busywork, not just ship customer-facing features.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" id="case-smarttools">
-        <button class="case-head" onclick="toggleCase('case-smarttools')">
-          <div class="case-head-text">
-            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">0-to-1</span><span class="tag">Platform / API</span></div>
-            <h3>Smart Tools: an agentic automation platform</h3>
-            <p class="blurb">Took an API-first agentic automation platform from 0-to-1 to adoption across 10+ Fortune 500 accounts.</p>
-          </div>
-          <span class="case-toggle">+</span>
-        </button>
-        <div class="case-body">
-          <div class="case-body-inner">
-            <div class="case-col">
-              <h4>Problem &amp; approach</h4>
-              <p>Enterprise customers needed to connect Prezent's content workflows into their own systems — which meant building a real platform, not a single feature.</p>
-              <ul>
-                <li>Defined product vision and backlog from scratch for an API-first platform.</li>
-                <li>Shipped OAuth authentication, data modeling, and webhook-triggered integrations end to end.</li>
-                <li>Added 50+ MCP (Model Context Protocol) integrations, prioritized by analyzing real agent behavior and use cases.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <h4>Reported outcome</h4>
-              <div class="metric-callout">
-                <div class="m-num">10+ Fortune 500 accounts</div>
-                <div class="m-note">Adoption across enterprise accounts after taking the platform from concept to shipped product.</div>
-              </div>
-              <p>Shows the platform/API side of my product work — auth, data modeling, integrations — alongside the AI-feature work above.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" id="case-rag">
-        <button class="case-head" onclick="toggleCase('case-rag')">
-          <div class="case-head-text">
-            <div class="case-meta"><span class="tag">Prezent AI</span><span class="tag">RAG</span><span class="tag">Document intelligence</span></div>
-            <h3>RAG document-intelligence engine</h3>
-            <p class="blurb">A retrieval-augmented generation engine for extracting accurate answers out of very long enterprise documents.</p>
-          </div>
-          <span class="case-toggle">+</span>
-        </button>
-        <div class="case-body">
-          <div class="case-body-inner">
-            <div class="case-col">
-              <h4>Problem &amp; approach</h4>
-              <p>Clients needed reliable extraction from dense enterprise documents — often 1,000+ pages, including complex spreadsheet content — not just a generic chat-with-PDF experience.</p>
-              <ul>
-                <li>Gathered requirements directly from client use cases.</li>
-                <li>Architected a RAG-based document-intelligence engine, plus a dedicated Excel-reading capability.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <h4>Reported outcome</h4>
-              <div class="metric-callout">
-                <div class="m-num">1,000+ page documents</div>
-                <div class="m-note">Improved extraction accuracy at this scale; the Excel-reading capability was specifically called out by clients.</div>
-              </div>
-              <p>A second, independent RAG system from the search work above — different retrieval problem, same underlying discipline.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" id="case-zaidyn">
-        <button class="case-head" onclick="toggleCase('case-zaidyn')">
-          <div class="case-head-text">
-            <div class="case-meta"><span class="tag">ZS Associates</span><span class="tag">Self-serve agent</span><span class="tag">Pharma / commercial analytics</span></div>
-            <h3>Self-service forecasting agent for ZAIDYN</h3>
-            <p class="blurb">Turned a manual, analyst-run forecasting process into a self-service product for pharma commercial teams.</p>
-          </div>
-          <span class="case-toggle">+</span>
-        </button>
-        <div class="case-body">
-          <div class="case-body-inner">
-            <div class="case-col">
-              <h4>Problem &amp; approach</h4>
-              <p>Drug forecasting at pharma clients depended on analysts manually combining 15+ inputs — prevalence, market share, compliance, and more — for every scenario.</p>
-              <ul>
-                <li>Defined and executed the product vision for a self-service forecasting agent.</li>
-                <li>Simplified onboarding so users could configure assumptions and build engagement plans themselves.</li>
-                <li>Led cross-functional delivery across product, engineering, analytics, and client teams via Agile/Scrum.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <h4>Reported outcome</h4>
-              <div class="metric-callout">
-                <div class="m-num">1,500+ analyst hours saved / year</div>
-                <div class="m-note">Manual effort down ~60%; onboarding time down ~75%; user activation up 30%+; time-to-market down ~25%.</div>
-              </div>
-              <p>My deepest experience turning a manual, expert-run workflow into a self-serve product — a different domain (pharma commercial) from my AI-platform work, same underlying pattern.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.01 · platform request flow</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Smart Tools platform flow: enterprise systems authenticate through OAuth into the Smart Tools API, which runs agentic workflows on a shared data model, then fires webhooks and MCP app integrations back out." data-stages='[{"t":"Clients","n":["Enterprise systems","Agents"]},{"t":"Auth","n":["OAuth"]},{"t":"Platform","n":["*Smart Tools API"]},{"t":"Engine","n":["Data model","Agentic workflows"]},{"t":"Out","n":["Webhooks","50+ MCP apps"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Enterprise teams wanted Prezent's content automation inside their own systems and agent tools, not only in a standalone app. That needs a real platform: authentication, a data model and integrations.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>API-first architecture from day one</li><li>OAuth authentication, data modeling and webhook-triggered integrations shipped end to end</li><li>50+ MCP (Model Context Protocol) app integrations, prioritized by analyzing agent behaviors and use cases</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Defined the product vision and owned the backlog, taking Smart Tools from 0-to-1. Ran structured product discovery to decide which integrations would most improve the user experience.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m"><b><span data-count="10">10</span><span class="u">+</span></b><span>Fortune 500 accounts adopted the platform</span></div>
+      <div class="m"><b><span data-count="50">50</span><span class="u">+</span></b><span>MCP app integrations added</span></div>
+      <div class="m"><b>0<span class="u">→</span>1</b><span>Vision, backlog and launch owned end to end</span></div>
     </div>
+  </div>
+</article>
+
+<article class="case" id="c-presentations" data-title="Presentations">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">02</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">AI editing agent</span><span class="tag">LLM</span></div>
+      <h3 class="case-title split">Presentations, <em>edited by agents</em></h3>
+      <p class="case-lede" data-r="up">An AI editing agent that automates content and layout work on presentations, with better output and less manual effort.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.02 · editing agent loop</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="AI editing agent: a draft presentation goes to the editing agent, which applies LLM content automation and layout automation, then a human review step, producing a polished deck." data-stages='[{"t":"Input","n":["Draft deck"]},{"t":"Agent","n":["*AI editing agent"]},{"t":"Automation","n":["LLM content","Layout"]},{"t":"Check","n":["Human review"]},{"t":"Output","n":["Polished deck"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Getting a presentation from draft to finished means a lot of repetitive content and layout editing. Quality depends on who has the time to do it.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>LLM-driven content automation</li><li>Automated layout fixes</li><li>AI features backed by evaluation criteria and human-oversight guardrails</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Owned product discovery and roadmap prioritization for the editing agent.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m"><b><span data-count="10">10</span><span class="u">%</span><span class="arrow">▼</span></b><span>less manual effort</span></div>
+      <div class="m q"><b>Better output quality</b><span>from content and layout automation</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-poster-gen" data-title="Poster generation">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">03</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">Generative content</span></div>
+      <h3 class="case-title split">Poster <em>generation</em></h3>
+      <p class="case-lede" data-r="up">Posters are part of Prezent's AI content product, alongside presentations. The same LLM content and layout thinking applies to a single, dense canvas.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.03 · brief to poster</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Poster generation: a brief and source content go into the generator, which drafts copy and lays out the poster, producing a poster whose performance feeds the analytics agent." data-stages='[{"t":"Input","n":["Brief","Source content"]},{"t":"Generate","n":["*Poster generator"]},{"t":"Compose","n":["Copy","Layout"]},{"t":"Output","n":["Poster"]},{"t":"Loop","n":["Performance data"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>A poster has to say a lot in one frame. Copy and layout have to work together, and teams need to know which posters actually perform.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>Generate copy and layout from a brief</li><li>Feed poster and content performance back into the roadmap (see the Poster Analytics Agent, next)</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Product management on Prezent's AI content surface, connecting generation to the analytics that tell the team what to build next.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m q"><b>Generation → measurement</b><span>Every poster becomes a data point for the roadmap</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-poster-agents" data-title="Poster agents">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">04</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">Agents</span><span class="tag">Analytics</span></div>
+      <h3 class="case-title split">Poster <em>Analytics Agent</em></h3>
+      <p class="case-lede" data-r="up">An agent that automates recurring analytics reporting on poster and content performance.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.04 · recurring report agent</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Poster Analytics Agent: poster performance and content performance data flow into the agent, which produces a recurring report and insights that feed roadmap decisions." data-stages='[{"t":"Data","n":["Poster performance","Content performance"]},{"t":"Agent","n":["*Analytics agent"]},{"t":"Output","n":["Recurring report","Insights"]},{"t":"Decision","n":["Roadmap"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Reporting on poster and content performance was a recurring manual job, and it competed with the product work it was meant to inform.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>An agent that runs the recurring analysis on its own schedule</li><li>Surfaces insights directly instead of raw tables</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Built the agent, then used what it surfaced to make roadmap and product decisions.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m q"><b>Less manual analysis</b><span>Recurring reporting runs on its own</span></div>
+      <div class="m q"><b>Insights → roadmap</b><span>Findings directly informed product decisions</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-workspace" data-title="My Workspace">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">05</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">GenAI platform</span><span class="tag">Flagship</span></div>
+      <h3 class="case-title split">My <em>Workspace</em></h3>
+      <p class="case-lede" data-r="up">A centralized enterprise GenAI workspace. Delivered end to end, and the reason for the company's CEO Award.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.05 · cross-functional delivery</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="My Workspace delivery: Engineering, Data Science, Operations and Design leadership converge on the product roadmap, which delivers My Workspace to enterprise users." data-stages='[{"t":"Partners","n":["Engineering","Data Science","Operations","Design"]},{"t":"Plan","n":["Product roadmap"]},{"t":"Product","n":["*My Workspace"]},{"t":"Users","n":["Enterprise teams"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Enterprise GenAI capabilities were spread out. Users needed one central place to work with them.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>One centralized GenAI workspace for enterprise users</li><li>Delivery coordinated across four leadership groups</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Owned the product roadmap and led end-to-end delivery with Engineering, Data Science, Operations and Design leadership.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m q"><div class="award">
+        <svg class="seal" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="sp" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><g class="ring"><text font-family="JetBrains Mono, monospace" font-size="9.4" letter-spacing="2.6" fill="#FF5B23"><textPath href="#sp">CEO AWARD · PREZENT AI · CEO AWARD · PREZENT AI ·</textPath></text></g><circle cx="50" cy="50" r="24" fill="#FF5B23"/><path d="M40 50l7 7 14-15" stroke="#160803" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <b>CEO Award</b></div><span>for platform impact at scale</span></div>
+      <div class="m"><b><span data-count="4">4</span></b><span>leadership groups aligned: Eng, DS, Ops, Design</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-search" data-title="Search">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">06</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">Semantic search</span><span class="tag">Embeddings</span></div>
+      <h3 class="case-title split">Search by <em>meaning</em></h3>
+      <p class="case-lede" data-r="up">Metadata-driven semantic retrieval across presentation content, so people find slides by what they mean rather than the exact words.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.06 · retrieval signals</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Semantic search: a user query is matched using slide-level metadata, embeddings and contextual signals, combined in semantic retrieval to return relevant slides." data-stages='[{"t":"Query","n":["User query"]},{"t":"Signals","n":["Slide metadata","Embeddings","Context signals"]},{"t":"Rank","n":["*Semantic retrieval"]},{"t":"Result","n":["Relevant slides"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Keyword matching misses content that is relevant but worded differently, and in a large presentation library that means slow discovery.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>Slide-level metadata</li><li>Embeddings for semantic similarity</li><li>Contextual signals combined into one retrieval layer</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Defined the retrieval approach: which signals to combine and how to measure relevance.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m"><b>~<span data-count="30">30</span><span class="u">%</span><span class="arrow">▲</span></b><span>search relevance</span></div>
+      <div class="m"><b>~<span data-count="40">40</span><span class="u">%</span><span class="arrow">▼</span></b><span>discovery time</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-rag" data-title="RAG">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">07</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">RAG</span><span class="tag">Document intelligence</span></div>
+      <h3 class="case-title split">RAG for <em>1,000-page</em> documents</h3>
+      <p class="case-lede" data-r="up">A retrieval-augmented generation engine for document intelligence, built to extract accurately from very long enterprise documents.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.07 · retrieval-augmented generation</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="RAG engine: enterprise documents of 1,000+ pages are chunked and indexed, relevant passages are retrieved, and the RAG engine grounds the LLM to produce accurate extractions." data-stages='[{"t":"Source","n":["1,000+ page docs"]},{"t":"Index","n":["Chunk","Embed + index"]},{"t":"Retrieve","n":["Relevant passages"]},{"t":"Generate","n":["*RAG engine"]},{"t":"Output","n":["Accurate extraction"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Clients needed reliable extraction from dense enterprise documents that run past 1,000 pages. A generic chat-with-PDF approach was not accurate enough.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>Retrieval-augmented generation so answers are grounded in the source</li><li>Built for document scale, not snippets</li><li>Paired with a dedicated Excel-reading capability (next case)</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Gathered requirements from client use cases and architected the RAG document-intelligence engine.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m"><b><span data-count="1000">1,000</span><span class="u">+</span></b><span>page documents handled</span></div>
+      <div class="m q"><b>Higher extraction accuracy</b><span>on long enterprise documents</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-excel" data-title="Excel reading">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">08</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">Structured data</span><span class="tag">Client favourite</span></div>
+      <h3 class="case-title split">Reading <em>complex Excel</em></h3>
+      <p class="case-lede" data-r="up">A capability for reading complex spreadsheets, built alongside the RAG engine and specifically praised by clients.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.08 · spreadsheet understanding</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Excel reading: workbooks with multiple sheets, tables and formulas are parsed by the Excel reader into structure the document-intelligence engine can use to answer questions." data-stages='[{"t":"Input","n":["Workbook"]},{"t":"Parse","n":["Sheets","Tables","Values"]},{"t":"Read","n":["*Excel reader"]},{"t":"Use","n":["RAG engine"]},{"t":"Output","n":["Answers"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>A lot of enterprise knowledge lives in complex spreadsheets, and text-first pipelines lose the structure that gives those numbers meaning.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>Treat spreadsheets as structure, not flat text</li><li>Feed that structure into the same document-intelligence engine</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Gathered the requirements and shaped the capability as part of the RAG engine work.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m q"><b>“Specifically praised by clients”</b><span>The capability clients singled out</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-support" data-title="Support agent">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">09</div>
+    <div>
+      <div class="tags"><span class="tag co">Prezent AI</span><span class="tag">Knowledge base</span><span class="tag">Automation</span></div>
+      <h3 class="case-title split">Support <em>knowledge agent</em></h3>
+      <p class="case-lede" data-r="up">An AI knowledge-base chatbot that answers from the company's own docs, and escalates real bugs to Jira automatically.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.09 · answer or escalate</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Support agent: release notes, FAQs, Confluence pages and support history feed the knowledge-base chatbot, which either answers the user or escalates the issue to Jira automatically." data-stages='[{"t":"Knowledge","n":["Release notes","FAQs","Confluence","Support history"]},{"t":"Agent","n":["*KB chatbot"]},{"t":"Route","n":["Answer","Jira escalation"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Support load and the ticket backlog grew, and bug reports took too long to reach the people who could fix them.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>Chatbot fed with release notes, FAQs, Confluence pages and support history</li><li>Automated Jira escalation when an issue is reported</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Built the knowledge-base chatbot and the escalation flow.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m q"><b>Lighter support load</b><span>and a smaller ticket backlog</span></div>
+      <div class="m q"><b>Faster bug resolution</b><span>through automatic Jira escalation</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-forecast" data-title="Forecasting agents">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">10</div>
+    <div>
+      <div class="tags"><span class="tag co">ZS Associates</span><span class="tag">ZAIDYN</span><span class="tag">Pharma</span><span class="tag">Self-serve</span></div>
+      <h3 class="case-title split">Forecasting <em>agents</em></h3>
+      <p class="case-lede" data-r="up">A self-service drug-forecasting agent for ZAIDYN, replacing an analyst-run process with one pharma teams run themselves.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.10 · 15+ input forecast</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Forecasting agent: prevalence, market share, compliance and more, 15+ inputs, feed the self-service forecasting agent, which produces forecasts, priority HCPs and KOLs, and targeted engagement plans." data-stages='[{"t":"15+ inputs","n":["Prevalence","Market share","Compliance","+12 more"]},{"t":"Agent","n":["*Forecasting agent"]},{"t":"Output","n":["Drug forecast","Priority HCPs / KOLs","Engagement plans"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Drug forecasts depended on analysts combining 15+ inputs by hand for every scenario, and onboarding new users was slow.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>A self-service agent that takes the 15+ inputs directly</li><li>Simplified onboarding: users configure market assumptions, identify priority HCPs and KOLs, and build targeted engagement plans</li><li>User research and discovery to drive adoption</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Defined and executed the product vision and roadmap, and led product, engineering, analytics and client teams through Agile/Scrum delivery.</p></div>
+    <div class="impact many" data-r="up">
+      <div class="m"><b><span data-count="1500">1,500</span><span class="u">+</span></b><span>analyst hours saved a year</span></div>
+      <div class="m"><b><span data-count="60">60</span><span class="u">%</span><span class="arrow">▼</span></b><span>manual effort</span></div>
+      <div class="m"><b><span data-count="75">75</span><span class="u">%</span><span class="arrow">▼</span></b><span>onboarding time</span></div>
+      <div class="m"><b><span data-count="30">30</span><span class="u">%+</span><span class="arrow">▲</span></b><span>user activations</span></div>
+      <div class="m"><b><span data-count="25">25</span><span class="u">%</span><span class="arrow">▼</span></b><span>time-to-market</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-nba" data-title="Next best offer">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">11</div>
+    <div>
+      <div class="tags"><span class="tag co">Aditya Birla Capital</span><span class="tag">Recommendation</span><span class="tag">Insurance</span></div>
+      <h3 class="case-title split">Next <em>best offer</em></h3>
+      <p class="case-lede" data-r="up">A data-driven insurance recommendation engine that tells field sales teams the next-best product for each customer.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.11 · customer to recommendation</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Next-best-offer engine: customer income, age, goals, risk appetite and affordability feed the recommendation engine, which gives field sales teams the next-best product." data-stages='[{"t":"Customer","n":["Income","Age","Goals","Risk appetite","Affordability"]},{"t":"Model","n":["*Recommendation engine"]},{"t":"Action","n":["Next-best product"]},{"t":"Channel","n":["Field sales"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Field sales teams had to guess which product fit each customer, so conversion depended on individual judgement.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>Recommend from five customer signals: income, age, goals, risk appetite and affordability</li><li>Deliver the next-best product straight to field sales</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Defined the product requirements and built the recommendation engine.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m"><b><span data-count="20">20</span><span class="u">%+</span><span class="arrow">▲</span></b><span>conversion</span></div>
+      <div class="m"><b><span data-count="15">15</span><span class="u">%+</span><span class="arrow">▲</span></b><span>revenue</span></div>
+    </div>
+  </div>
+</article>
+
+<article class="case" id="c-incentive" data-title="Incentive engine">
+  <div class="case-head">
+    <div class="case-no" aria-hidden="true">12</div>
+    <div>
+      <div class="tags"><span class="tag co">Aditya Birla Capital</span><span class="tag">ABSLI</span><span class="tag">Automation</span></div>
+      <h3 class="case-title split">Pan-India <em>incentive engine</em></h3>
+      <p class="case-lede" data-r="up">An incentive automation product for ABSLI that replaced manual calculation across branches nationwide.</p>
+    </div>
+  </div>
+  <figure class="diagram" data-r="scale">
+    <figcaption class="mono"><span>fig.12 · six-metric incentive calc</span><span class="live">live</span></figcaption>
+    <div class="dgw" data-label="Incentive automation: sales targets, activations, premium achievement, persistency, product mix and compliance metrics feed the incentive engine, which produces incentives across branches Pan-India." data-stages='[{"t":"Metrics","n":["Sales targets","Activations","Premium","Persistency","Product mix","Compliance"]},{"t":"Engine","n":["*Incentive engine"]},{"t":"Output","n":["Pan-India branches"]}]'></div>
+  </figure>
+  <div class="case-grid">
+    <div class="blk" data-r="up"><h4 data-n="A">Problem</h4><p>Incentives across branches were calculated by hand from many metrics, which took time and was hard to keep consistent.</p></div>
+    <div class="blk" data-r="up" style="--d:.08s"><h4 data-n="B">Approach</h4><ul><li>One engine covering sales targets, activations, premium achievement, persistency, product mix and compliance</li><li>Rolled out Pan-India</li></ul></div>
+    <div class="blk" data-r="up" style="--d:.16s"><h4 data-n="C">My role</h4><p>Gathered requirements and aligned stakeholders to design the product.</p></div>
+    <div class="impact" data-r="up">
+      <div class="m"><b><span data-count="70">70</span><span class="u">%+</span><span class="arrow">▼</span></b><span>manual processing time across branches</span></div>
+      <div class="m"><b><span data-count="6">6</span></b><span>metric families automated</span></div>
+    </div>
+  </div>
+</article>
+</div>
+
+<!-- ================= APPROACH ================= -->
+<section id="approach" class="wrap sec" aria-labelledby="ap-h">
+  <div class="eyebrow mono">02 · How I work</div>
+  <h2 class="h2 split" id="ap-h">Prototype <em>first.</em> Ship with guardrails.</h2>
+  <p class="sec-intro" data-r="up">I use Claude Code and Lovable daily to prototype working features with stakeholders before engineering invests, which cut idea-to-validation time from sprints to days.</p>
+  <div class="steps" id="steps">
+    <div class="step" data-r="up"><div class="sn">01</div><h3>Observe the real workflow</h3><p>Customer discovery and user research on how the work actually happens today.</p></div>
+    <div class="step" data-r="up" style="--d:.08s"><div class="sn">02</div><h3>Prototype in days</h3><p>Working prototypes in Claude Code and Lovable, validated with stakeholders.</p></div>
+    <div class="step" data-r="up" style="--d:.16s"><div class="sn">03</div><h3>Design the loop</h3><p>What is retrieved, how it is grounded, and where a human stays in the loop.</p></div>
+    <div class="step" data-r="up" style="--d:.24s"><div class="sn">04</div><h3>Ship with guardrails</h3><p>Evaluation criteria, failure-mode analysis and human oversight at launch.</p></div>
+    <div class="step" data-r="up" style="--d:.32s"><div class="sn">05</div><h3>Measure, iterate</h3><p>Activation, adoption and retention KPIs, A/B tests and OKRs.</p></div>
   </div>
 </section>
 
-<section id="approach" style="background:var(--paper-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">How I work</div>
-      <h2>Shipping agent & search products, in order</h2>
-      <p>The same four-stage loop, whether the "product" is a customer-facing search feature or an internal agent.</p>
+<!-- ================= BACKGROUND ================= -->
+<section id="background" class="wrap sec" aria-labelledby="bg-h">
+  <div class="eyebrow mono">03 · Background</div>
+  <h2 class="h2 split" id="bg-h">Engineer → <em>strategist</em> → AI PM</h2>
+  <div class="tl">
+    <div class="role" data-r="up">
+      <div class="when mono">Sep 2024 – Present</div>
+      <div><h3>Product Manager</h3><div class="org mono">Prezent AI · Remote</div></div>
+      <ul><li>Smart Tools 0-to-1, adopted by 10+ Fortune 500 accounts</li><li>RAG, Excel reading, semantic search, poster and editing agents</li><li>CEO Award for My Workspace</li></ul>
     </div>
-    <div class="approach-list">
-      <div class="approach-step" data-step="1">
-        <h3>Observe the real workflow</h3>
-        <p>Watch how people actually search, retrieve, or do the manual task today — not how the process doc says they do it. This is where most of the real requirements come from.</p>
-      </div>
-      <div class="approach-step" data-step="2">
-        <h3>Design the retrieval or agent loop</h3>
-        <p>Decide what's retrieved, how it's ranked or grounded, and where a human needs to stay in the loop — before writing a single product spec.</p>
-      </div>
-      <div class="approach-step" data-step="3">
-        <h3>Ship with guardrails</h3>
-        <p>Evaluation criteria, failure-mode analysis, and human-oversight checkpoints go in at launch, not after something breaks in production.</p>
-      </div>
-      <div class="approach-step" data-step="4">
-        <h3>Measure, then iterate</h3>
-        <p>Relevance, latency, adoption, and the honest edge cases — tracked with the same rigor pre- and post-launch, usually via A/B tests where the stakes justify it.</p>
-      </div>
+    <div class="role" data-r="up">
+      <div class="when mono">Mar 2022 – Aug 2024</div>
+      <div><h3>Associate Consultant, Product &amp; Strategy</h3><div class="org mono">ZS Associates · Pune</div></div>
+      <ul><li>Product vision for ZAIDYN's self-service forecasting agent</li><li>1,500+ analyst hours saved a year; 75% faster onboarding</li><li>25% faster time-to-market</li></ul>
     </div>
+    <div class="role" data-r="up">
+      <div class="when mono">Nov 2020 – Feb 2022</div>
+      <div><h3>Manager, Product Development</h3><div class="org mono">Aditya Birla Capital · Mumbai</div></div>
+      <ul><li>Next-best-product recommendation engine: 20%+ conversion, 15%+ revenue</li><li>Pan-India incentive automation for ABSLI: 70%+ less manual processing</li></ul>
+    </div>
+    <div class="role" data-r="up">
+      <div class="when mono">Jul 2016 – Oct 2018</div>
+      <div><h3>Software Engineer</h3><div class="org mono">John Deere / KocharTech · Pune</div></div>
+      <ul><li>Mentored 5 engineers; 33% better team turnaround time</li><li>Platform migration cut page load time by 50%</li></ul>
+    </div>
+  </div>
+  <div class="edu" data-r="up">
+    <div><span class="mono">2019 – 2020</span><b>Post Graduate Program in Management, Marketing &amp; Analytics</b><span>Great Lakes Institute of Management, Gurgaon</span></div>
+    <div><span class="mono">2012 – 2016</span><b>B.Tech, Computer Science</b><span>Guru Nanak Dev University, Amritsar</span></div>
+  </div>
+
+  <div class="skills">
+    <div data-r="up"><h3>AI &amp; agentic product</h3><div class="chips"><span class="chip">RAG</span><span class="chip">Agentic workflows</span><span class="chip">Semantic search &amp; retrieval</span><span class="chip">MCP integrations</span><span class="chip">Prompt engineering</span><span class="chip">Evals &amp; failure-mode analysis</span><span class="chip">Responsible AI / human oversight</span><span class="chip">Claude Code</span><span class="chip">Lovable</span></div></div>
+    <div data-r="up" style="--d:.08s"><h3>Platform &amp; data</h3><div class="chips"><span class="chip">API-first architecture</span><span class="chip">OAuth</span><span class="chip">Webhooks</span><span class="chip">Data modeling</span><span class="chip">Field mapping</span><span class="chip">Backlog ownership</span></div></div>
+    <div data-r="up"><h3>Growth &amp; analytics</h3><div class="chips"><span class="chip">Activation · adoption · retention</span><span class="chip">A/B testing</span><span class="chip">OKRs</span><span class="chip">RICE / MoSCoW</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span></div></div>
+    <div data-r="up" style="--d:.08s"><h3>Product &amp; leadership</h3><div class="chips"><span class="chip">Product discovery</span><span class="chip">Vision &amp; roadmap</span><span class="chip">PRD-lite specs</span><span class="chip">GTM strategy</span><span class="chip">MVP definition</span><span class="chip">Agile / Scrum</span><span class="chip">Jira · Aha!</span><span class="chip">CXO alignment</span></div></div>
   </div>
 </section>
 
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Toolkit</div>
-      <h2>Skills</h2>
-    </div>
-    <div class="skill-group">
-      <h4>AI & agentic product management</h4>
-      <div class="chip-row">
-        <span class="chip">RAG</span><span class="chip">Agentic workflows</span><span class="chip">Semantic search & retrieval</span>
-        <span class="chip">MCP integrations</span><span class="chip">Prompt engineering</span><span class="chip">Evaluation criteria & failure-mode analysis</span>
-        <span class="chip">Responsible AI / human oversight</span><span class="chip">0-to-1 prototyping (Claude Code, Lovable)</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h4>Platform & data</h4>
-      <div class="chip-row">
-        <span class="chip">API-first architecture</span><span class="chip">OAuth / auth</span><span class="chip">Webhooks</span>
-        <span class="chip">Data modeling</span><span class="chip">Backlog ownership & grooming</span><span class="chip">Milestone-driven delivery</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h4>Growth & analytics</h4>
-      <div class="chip-row">
-        <span class="chip">Activation / adoption / retention</span><span class="chip">A/B testing</span><span class="chip">OKRs</span>
-        <span class="chip">RICE / MoSCoW</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h4>Product development & leadership</h4>
-      <div class="chip-row">
-        <span class="chip">Product discovery</span><span class="chip">Roadmap planning & prioritization</span><span class="chip">PRD-lite specs</span>
-        <span class="chip">Customer discovery</span><span class="chip">Competitive analysis</span><span class="chip">GTM strategy</span>
-        <span class="chip">Agile/Scrum</span><span class="chip">Cross-functional & CXO alignment</span>
-      </div>
-    </div>
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="wrap contact" aria-labelledby="ct-h">
+  <div class="eyebrow mono">04 · Contact</div>
+  <h2 class="contact-big split" id="ct-h">Let's build the <em>next</em> system.</h2>
+  <a class="mail" href="mailto:aayushmehan012@gmail.com">aayushmehan012@gmail.com</a>
+  <div class="contact-row">
+    <a class="btn solid mag" href="mailto:aayushmehan012@gmail.com">Email me <span class="arr" aria-hidden="true">→</span></a>
+    <a class="btn mag" href="https://linkedin.com/in/aayushmehan" target="_blank" rel="noopener">LinkedIn <span class="arr" aria-hidden="true">↗</span></a>
   </div>
+  <footer class="mono"><span>Aayush Mehan · Pune, India</span><span>Built by hand · no trackers</span></footer>
 </section>
+</main>
 
-<section id="background" style="background:var(--paper-raised); border-top:1px solid var(--line);">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Background</div>
-      <h2>Where this experience comes from</h2>
-    </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-date">Sep 2024 — Present</div>
-        <h3>Product Manager</h3>
-        <div class="tl-org">Prezent AI · Remote</div>
-        <p class="desc">Agentic automation, enterprise search, and RAG document intelligence for a B2B SaaS platform used by Fortune 500 accounts.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">Mar 2022 — Aug 2024</div>
-        <h3>Associate Consultant, Product and Strategy</h3>
-        <div class="tl-org">ZS Associates · Pune, India</div>
-        <p class="desc">Owned product vision for ZAIDYN's self-service drug forecasting agent, used by pharma commercial teams.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">Nov 2020 — Feb 2022</div>
-        <h3>Manager, Product Development</h3>
-        <div class="tl-org">Aditya Birla Capital · Mumbai, India</div>
-        <p class="desc">Built a Pan-India incentive automation product and a data-driven insurance recommendation engine.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">Jul 2016 — Oct 2018</div>
-        <h3>Software Engineer</h3>
-        <div class="tl-org">John Deere / KocharTech · Pune, India</div>
-        <p class="desc">The engineering foundation behind how I work with platform and API product today.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">2019 — 2020</div>
-        <h3>Post Graduate Program in Management, Marketing & Analytics</h3>
-        <div class="tl-org">Great Lakes Institute of Management, Gurgaon</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">2012 — 2016</div>
-        <h3>B.Tech, Computer Science</h3>
-        <div class="tl-org">Guru Nanak Dev University, Amritsar</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div class="wrap">
-    <h2>Open to Product / Senior Product Manager roles in AI, search, and enterprise platforms.</h2>
-    <p>If you're hiring for a role where retrieval, agents, or enterprise AI matter, I'd like to talk.</p>
-    <div class="contact-links">
-      <a class="btn btn-primary" href="mailto:aayushmehan012@gmail.com">Email me</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/aayushmehan">LinkedIn</a>
-      <a class="btn btn-ghost" href="tel:+919501813420">+91 9501813420</a>
-    </div>
-    <div class="copyright">Aayush Mehan — Pune, India</div>
-  </div>
-</footer>
+<div class="hud mono" aria-hidden="true"><span class="hn">01</span><span class="ht">APIs</span><span class="bar"><i></i></span></div>
 
 <script>
-function toggleCase(id){
-  var el = document.getElementById(id);
-  var isOpen = el.classList.contains('open');
-  document.querySelectorAll('.case.open').forEach(function(c){
-    c.classList.remove('open');
-    c.querySelector('.case-toggle').textContent = '+';
-  });
-  if(!isOpen){
-    el.classList.add('open');
-    el.querySelector('.case-toggle').textContent = '+';
-  }
-}
-</script>
+(() => {
+  const doc = document.documentElement;
+  doc.classList.add('js');
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---- split letters / words ---- */
+  document.querySelectorAll('.name .ln').forEach(ln => {
+    ln.innerHTML = [...ln.textContent].map((c, i) => `<span class="ch" style="--i:${i}">${c}</span>`).join('');
+  });
+  document.querySelectorAll('.split').forEach(el => {
+    let i = 0;
+    const walk = node => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const s = document.createElement('span'); s.textContent = part; s.style.setProperty('--i', i++);
+            w.appendChild(s); frag.appendChild(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    };
+    walk(el);
+  });
+
+  /* ---- count-ups ---- */
+  const fmt = n => n.toLocaleString('en-US');
+  const countUp = el => {
+    const to = +el.dataset.count;
+    if (RM) { el.textContent = fmt(to); return; }
+    const t0 = performance.now(), dur = 1500 + Math.min(to, 2000) * .2;
+    const tick = t => {
+      const p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(2, -10 * p);
+      el.textContent = fmt(Math.round(to * (p === 1 ? 1 : e)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    el.textContent = '0';
+    requestAnimationFrame(tick);
+  };
+
+  /* ---- reveals ---- */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll?.('[data-count]').forEach(countUp);
+    if (e.target.matches('[data-count]')) countUp(e.target);
+    io.unobserve(e.target);
+  }), { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('[data-r], .split, .stat [data-count]').forEach(el => io.observe(el));
+
+  /* ---- diagrams ---- */
+  const NS = 'http://www.w3.org/2000/svg';
+  const wrapText = (s, max) => {
+    const words = s.split(' '), lines = []; let cur = '';
+    words.forEach(w => { if ((cur + ' ' + w).trim().length > max && cur) { lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); });
+    if (cur) lines.push(cur); return lines;
+  };
+  const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent && parent.appendChild(n); return n; };
+
+  function layout(stages, narrow) {
+    const nodes = [];
+    if (!narrow) {
+      const VW = 1000, nw = 168, fs = 13, lh = 16, gapY = 16, top = 34;
+      const maxN = Math.max(...stages.map(s => s.n.length));
+      const S = stages.length, step = (VW - nw) / (S - 1);
+      const boxH = s => 22 + wrapText(s, 19).length * lh;
+      const colH = st => st.n.reduce((a, s) => a + boxH(s.replace('*', '')), 0) + (st.n.length - 1) * gapY;
+      const H = Math.max(...stages.map(colH)) + top + 8;
+      const titles = [];
+      stages.forEach((st, k) => {
+        const x = k * step; let y = top + (H - top - 8 - colH(st)) / 2;
+        titles.push({ x: x + nw / 2, y: 14, t: st.t, k });
+        st.n.forEach(raw => {
+          const core = raw.startsWith('*'), label = raw.replace('*', ''), lines = wrapText(label, 19), h = 22 + lines.length * lh;
+          nodes.push({ k, x, y, w: nw, h, core, lines, fs, lh }); y += h + gapY;
+        });
+      });
+      return { VW, H, nodes, titles, dir: 'h', maxN };
+    }
+    const VW = 360, gap = 8, fs = 11.5, lh = 14, titleH = 24, stageGap = 40;
+    let y = 0; const titles = [];
+    stages.forEach((st, k) => {
+      titles.push({ x: 0, y: y + 12, t: st.t, k, left: true });
+      y += titleH;
+      const per = st.n.length === 4 ? 2 : Math.min(st.n.length, 3);
+      for (let r = 0; r < st.n.length; r += per) {
+        const row = st.n.slice(r, r + per), nw = (VW - gap * (row.length - 1)) / row.length;
+        const max = Math.floor((nw - 16) / 7);
+        const items = row.map(raw => ({ core: raw.startsWith('*'), lines: wrapText(raw.replace('*', ''), max) }));
+        const h = 20 + Math.max(...items.map(i => i.lines.length)) * lh;
+        items.forEach((it, j) => nodes.push({ k, x: j * (nw + gap), y, w: nw, h, core: it.core, lines: it.lines, fs, lh }));
+        y += h + gap;
+      }
+      y += stageGap - gap;
+    });
+    return { VW, H: y - stageGap + 6, nodes, titles, dir: 'v' };
+  }
+
+  function edgesFor(nodes, S) {
+    const out = [];
+    for (let k = 0; k < S - 1; k++) {
+      const a = nodes.filter(n => n.k === k), b = nodes.filter(n => n.k === k + 1);
+      if (a.length > 1 && a.length === b.length) a.forEach((n, i) => out.push([n, b[i], k]));
+      else a.forEach(n => b.forEach(m => out.push([n, m, k])));
+    }
+    return out;
+  }
+
+  function render(host) {
+    const stages = JSON.parse(host.dataset.stages);
+    const narrow = host.clientWidth < 680;
+    const mode = narrow ? 'v' : 'h';
+    if (host.dataset.mode === mode) return;
+    host.dataset.mode = mode;
+    const L = layout(stages, narrow), S = stages.length;
+    host.innerHTML = '';
+    const svg = el('svg', { class: 'dg' + (host.dataset.on ? ' on' : ''), viewBox: `-2 -2 ${L.VW + 4} ${L.H + 4}`, role: 'img', 'aria-label': host.dataset.label }, host);
+    const stageDelay = k => (0.15 + k * 0.32).toFixed(2) + 's';
+    L.titles.forEach(t => {
+      const tx = el('text', { x: t.x, y: t.y, class: 'st', 'font-size': narrow ? 10 : 11, 'text-anchor': t.left ? 'start' : 'middle' }, svg);
+      tx.textContent = `${String(t.k + 1).padStart(2, '0')} / ${t.t.toUpperCase()}`;
+    });
+    const eg = el('g', {}, svg), pg = el('g', {}, svg), ng = el('g', {}, svg);
+    edgesFor(L.nodes, S).forEach(([a, b, k], i) => {
+      let d;
+      if (L.dir === 'h') {
+        const x1 = a.x + a.w, y1 = a.y + a.h / 2, x2 = b.x, y2 = b.y + b.h / 2, dx = (x2 - x1) * .5;
+        d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
+      } else {
+        const x1 = a.x + a.w / 2, y1 = a.y + a.h, x2 = b.x + b.w / 2, y2 = b.y, dy = (y2 - y1) * .55;
+        d = `M${x1},${y1} C${x1},${y1 + dy} ${x2},${y2 - dy} ${x2},${y2}`;
+      }
+      const p = el('path', { d, class: 'edge', pathLength: 1 }, eg);
+      p.style.setProperty('--d', (0.35 + k * 0.32).toFixed(2) + 's');
+      if (!RM) {
+        const c = el('circle', { r: narrow ? 2.6 : 3.2, class: 'pk' }, pg);
+        c.style.setProperty('--d', (1.2 + k * 0.32).toFixed(2) + 's');
+        const dur = 1.6 + ((i * 37) % 13) / 10;
+        el('animateMotion', { dur: dur + 's', repeatCount: 'indefinite', path: d, begin: (-((i * 0.53) % dur)).toFixed(2) + 's', keyPoints: '0;1', keyTimes: '0;1', calcMode: 'spline', keySplines: '.45 0 .55 1' }, c);
+      }
+    });
+    L.nodes.forEach(n => {
+      const g = el('g', { class: 'node' + (n.core ? ' core' : '') }, ng);
+      g.style.setProperty('--d', stageDelay(n.k));
+      if (n.core) el('rect', { x: n.x, y: n.y, width: n.w, height: n.h, rx: n.h / 2 > 18 ? 18 : n.h / 2, class: 'halo' }, ng);
+      el('rect', { x: n.x, y: n.y, width: n.w, height: n.h, rx: 10 }, g);
+      const tx = el('text', { x: n.x + n.w / 2, 'text-anchor': 'middle', 'font-size': n.fs }, g);
+      const y0 = n.y + n.h / 2 - ((n.lines.length - 1) * n.lh) / 2 + n.fs * .36;
+      n.lines.forEach((ln, j) => { const ts = el('tspan', { x: n.x + n.w / 2, y: y0 + j * n.lh }, tx); ts.textContent = ln; });
+    });
+    if (host.dataset.paused === '1') svg.pauseAnimations?.();
+  }
+
+  const hosts = [...document.querySelectorAll('.dgw')];
+  hosts.forEach(render);
+  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => hosts.forEach(render), 150); });
+  const dio = new IntersectionObserver(es => es.forEach(e => {
+    const h = e.target, svg = h.querySelector('svg');
+    if (e.isIntersecting && e.intersectionRatio > 0.25) { h.dataset.on = '1'; svg.classList.add('on'); }
+    if (e.isIntersecting) { h.dataset.paused = '0'; svg.unpauseAnimations?.(); }
+    else { h.dataset.paused = '1'; svg.pauseAnimations?.(); }
+  }), { threshold: [0, .25, .5] });
+  hosts.forEach(h => dio.observe(h));
+
+  /* ---- scroll: progress, nav, HUD, steps ---- */
+  const prog = document.querySelector('.progress'), nav = document.querySelector('nav.top');
+  const hud = document.querySelector('.hud'), hn = hud.querySelector('.hn'), ht = hud.querySelector('.ht'), hb = hud.querySelector('.bar i');
+  const cases = [...document.querySelectorAll('.case')], steps = document.getElementById('steps');
+  const heroName = document.querySelector('.name');
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const y = scrollY, H = doc.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${H > 0 ? y / H : 0})`;
+    nav.classList.toggle('solid', y > 40);
+    if (!RM) heroName.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
+    let cur = null;
+    cases.forEach(c => { const r = c.getBoundingClientRect(); if (r.top < innerHeight * .5 && r.bottom > innerHeight * .5) cur = c; });
+    cases.forEach(c => c.classList.toggle('active', c === cur));
+    hud.classList.toggle('show', !!cur);
+    if (cur) {
+      const i = cases.indexOf(cur);
+      hn.textContent = String(i + 1).padStart(2, '0') + '/' + cases.length;
+      ht.textContent = cur.dataset.title;
+      const r = cur.getBoundingClientRect();
+      hb.style.transform = `scaleX(${Math.min(Math.max((innerHeight * .5 - r.top) / r.height, 0), 1)})`;
+    }
+    const sr = steps.getBoundingClientRect();
+    steps.style.setProperty('--p', Math.min(Math.max((innerHeight * .85 - sr.top) / (sr.height + innerHeight * .3), 0), 1));
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  /* ---- hover: spotlight tiles + magnetic buttons ---- */
+  document.querySelectorAll('.tile').forEach(t => t.addEventListener('pointermove', e => {
+    const r = t.getBoundingClientRect();
+    t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+  if (!RM && matchMedia('(hover:hover)').matches) {
+    document.querySelectorAll('.mag').forEach(b => {
+      b.addEventListener('pointermove', e => {
+        const r = b.getBoundingClientRect();
+        b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px, ${(e.clientY - r.top - r.height / 2) * .35}px)`;
+      });
+      b.addEventListener('pointerleave', () => { b.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1), background .3s, color .3s, border-color .3s'; b.style.transform = ''; setTimeout(() => b.style.transition = '', 500); });
+    });
+  }
+
+  /* ---- hero flow field: messy signals in, ordered lanes out ---- */
+  const cv = document.getElementById('flow'), ctx = cv.getContext('2d');
+  let W, H, DPR, parts = [], ptr = { x: -9999, y: -9999 }, running = true, coreX, coreY;
+  const LANES = 5;
+  const size = () => {
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    coreX = W * (W < 820 ? .55 : .7); coreY = H * (W < 820 ? .2 : .24);
+    const n = Math.round(Math.min(340, W * H / 4200));
+    parts = Array.from({ length: n }, () => spawn(Math.random() * W));
+  };
+  const spawn = x => ({ x, y0: Math.random() * H, lane: Math.floor(Math.random() * LANES), v: .55 + Math.random() * 1.1, ph: Math.random() * 6.28, w: .6 + Math.random() * 1.4, off: 0 });
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const posY = (p, t) => {
+    const laneGap = Math.min(H * .085, 54), laneY = coreY + (p.lane - (LANES - 1) / 2) * laneGap;
+    const cx = coreX / W;
+    if (t < cx) { const u = t / cx, e = ease(u); return p.y0 + (coreY - p.y0) * e + Math.sin(t * 22 + p.ph) * 26 * (1 - u); }
+    const u = Math.min((t - cx) / (1 - cx) * 1.6, 1); return coreY + (laneY - coreY) * ease(u);
+  };
+  let tm = 0;
+  const frame = () => {
+    if (!running) return;
+    tm += 1;
+    ctx.fillStyle = 'rgba(15,13,11,0.11)'; ctx.fillRect(0, 0, W, H);
+    for (const p of parts) {
+      const px = p.x;
+      p.x += p.v * (p.x > coreX ? 2.1 : 1.3);
+      if (p.x > W + 10) Object.assign(p, spawn(-10));
+      let y = posY(p, p.x / W);
+      const dx = p.x - ptr.x, dy = y - ptr.y, d2 = dx * dx + dy * dy;
+      if (d2 < 14000) p.off += (dy >= 0 ? 1 : -1) * (14000 - d2) / 14000 * 6;
+      p.off *= .93; y += p.off;
+      const right = p.x > coreX;
+      ctx.strokeStyle = right ? 'rgba(255,91,35,0.95)' : `rgba(242,236,226,${.22 + .45 * (p.x / coreX)})`;
+      ctx.lineWidth = right ? 2 : p.w;
+      ctx.beginPath(); ctx.moveTo(px, p.py ?? y); ctx.lineTo(p.x, y); ctx.stroke();
+      p.py = y;
+    }
+    const pulse = 1 + Math.sin(tm * .05) * .08;
+    ctx.beginPath(); ctx.arc(coreX, coreY, 26 * pulse, 0, 6.283); ctx.fillStyle = 'rgba(255,91,35,0.12)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(coreX, coreY, 9, 0, 6.283); ctx.fillStyle = '#FF5B23'; ctx.fill();
+    ctx.beginPath(); ctx.arc(coreX, coreY, 44 + (tm % 90) * .7, 0, 6.283); ctx.strokeStyle = `rgba(255,91,35,${.35 * (1 - (tm % 90) / 90)})`; ctx.lineWidth = 1; ctx.stroke();
+    requestAnimationFrame(frame);
+  };
+  size();
+  addEventListener('resize', () => { size(); if (RM) staticDraw(); });
+  cv.parentElement.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); ptr.x = e.clientX - r.left; ptr.y = e.clientY - r.top; });
+  cv.parentElement.addEventListener('pointerleave', () => { ptr.x = ptr.y = -9999; });
+  const staticDraw = () => {
+    ctx.clearRect(0, 0, W, H);
+    parts.forEach(p => { ctx.beginPath(); for (let x = 0; x < W; x += 6) { const y = posY(p, x / W); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+      ctx.strokeStyle = 'rgba(242,236,226,0.05)'; ctx.lineWidth = 1; ctx.stroke(); });
+    ctx.beginPath(); ctx.arc(coreX, coreY, 9, 0, 6.283); ctx.fillStyle = '#FF5B23'; ctx.fill();
+  };
+  if (RM) staticDraw();
+  else {
+    new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) requestAnimationFrame(frame); }).observe(cv);
+    document.addEventListener('visibilitychange', () => { const was = running; running = !document.hidden; if (running && !was) requestAnimationFrame(frame); });
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
 </body>
 </html>

@@ -269,6 +269,7 @@ section{position:relative}
 .contact-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:clamp(36px,4vw,60px)}
 .mail{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3.2vw,48px);text-decoration:none;border-bottom:2px solid var(--accent);display:inline-block;margin-top:36px;transition:color .3s;word-break:break-all}
 .mail:hover{color:var(--accent)}
+.reach{display:flex;flex-wrap:wrap;gap:0 clamp(24px,4vw,64px);align-items:baseline}
 footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:28px 0 40px;border-top:1px solid var(--line);margin-top:clamp(70px,9vw,140px);color:var(--dim)}
 
 /* ---------- reduced motion ---------- */
@@ -716,9 +717,13 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
 <section id="contact" class="wrap contact" aria-labelledby="ct-h">
   <div class="eyebrow mono">04 · Contact</div>
   <h2 class="contact-big split" id="ct-h">Let's build the <em>next</em> system.</h2>
-  <a class="mail" href="mailto:aayushmehan012@gmail.com">aayushmehan012@gmail.com</a>
+  <div class="reach">
+    <a class="mail" href="mailto:aayushmehan012@gmail.com">aayushmehan012@gmail.com</a>
+    <a class="mail" href="tel:+919501813420">+91 95018 13420</a>
+  </div>
   <div class="contact-row">
     <a class="btn solid mag" href="mailto:aayushmehan012@gmail.com">Email me <span class="arr" aria-hidden="true">→</span></a>
+    <a class="btn mag" href="tel:+919501813420">Call <span class="arr" aria-hidden="true">→</span></a>
     <a class="btn mag" href="https://linkedin.com/in/aayushmehan" target="_blank" rel="noopener">LinkedIn <span class="arr" aria-hidden="true">↗</span></a>
   </div>
   <footer class="mono"><span>Aayush Mehan · Pune, India</span><span>Built by hand · no trackers</span></footer>

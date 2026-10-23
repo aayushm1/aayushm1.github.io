@@ -208,7 +208,7 @@
 
     /* Drawer */
     .scrim { position: fixed; inset: 0; background: rgba(0, 0, 0, .55); backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 160; }
-    .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(620px, 100%); background: var(--bg); border-left: 1px solid var(--line); z-index: 170; transform: translateX(100%); transition: transform .6s var(--ease); overflow-y: auto; padding: 36px 44px 44px; }
+    .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(860px, 100%); background: var(--bg); border-left: 1px solid var(--line); z-index: 170; transform: translateX(100%); transition: transform .6s var(--ease); overflow-y: auto; padding: 36px 44px 44px; }
     body.drawer-open .scrim { opacity: 1; pointer-events: auto; }
     body.drawer-open .drawer { transform: none; }
     .d-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
@@ -217,8 +217,6 @@
     .d-close:hover { border-color: var(--orange); }
     .drawer .co { color: var(--orange); }
     .drawer h3 { font-family: var(--display); font-size: clamp(32px, 4vw, 46px); line-height: 1; letter-spacing: -.02em; text-transform: uppercase; margin: 14px 0 22px; }
-    .d-impact { background: var(--orange); color: var(--on-orange); padding: 22px 24px; margin-bottom: 30px; }
-    .d-impact b { font-family: var(--display); font-size: 44px; display: block; line-height: 1; letter-spacing: -.02em; }
     .drawer h4 { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin: 28px 0 8px; }
     .drawer p, .drawer li { font-size: 16.5px; }
     .drawer p { margin: 0; }
@@ -227,6 +225,50 @@
     .d-nav { display: flex; justify-content: space-between; margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); }
     .d-nav button { background: none; border: 0; color: var(--body); cursor: pointer; font: inherit; }
     .d-nav button:hover { color: var(--orange); }
+
+    /* Drawer: detailed case study */
+    .d-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: -6px 0 18px; }
+    .d-tags span { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line-2); color: var(--muted); padding: 5px 10px; border-radius: 99px; }
+    .d-lede { font-family: var(--serif); font-size: clamp(19px, 1.8vw, 23px) !important; line-height: 1.4; color: var(--ink); margin-bottom: 26px !important; }
+    .d-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); border: 1px solid var(--line); margin-bottom: 8px; }
+    .d-metrics > div { padding: 18px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; }
+    .d-metrics > div:first-child { background: var(--orange); color: var(--on-orange); border-color: var(--orange); }
+    .d-metrics b { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 3vw, 38px); display: block; line-height: 1; letter-spacing: -.02em; color: var(--ink); }
+    .d-metrics b.sm { font-size: 21px; line-height: 1.15; }
+    .d-metrics > div:first-child b { color: var(--on-orange); }
+    .d-metrics span { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.35; opacity: .85; }
+    .d-fig { margin: 6px 0 0; border: 1px solid var(--line); background: radial-gradient(circle at 1px 1px, rgba(var(--streak), .08) 1px, transparent 0) 0 0/20px 20px, var(--bg-2); padding: 18px 20px 20px; }
+    .d-fig figcaption { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .d-fig .live { color: var(--orange); display: flex; align-items: center; gap: 8px; }
+    .d-fig .live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); animation: dblink 1.4s steps(2) infinite; }
+    @keyframes dblink { 50% { opacity: .2; } }
+    .dg { width: 100%; height: auto; display: block; overflow: visible; }
+    .dg .st { font-family: var(--mono); fill: var(--muted); letter-spacing: .12em; transition: fill .3s; }
+    .dg .st.hl { fill: var(--orange); }
+    .dg .edge { fill: none; stroke: var(--line-2); stroke-width: 1.4; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1s var(--ease), stroke .3s; transition-delay: var(--d), 0s; }
+    .dg .edge.hl { stroke: var(--orange); }
+    .dg .node { opacity: 0; transform: translateY(8px); transform-box: fill-box; transition: opacity .6s var(--ease), transform .7s var(--ease); transition-delay: var(--d); cursor: pointer; }
+    .dg .node rect { fill: var(--surface); stroke: var(--line-2); stroke-width: 1; transition: stroke .3s, fill .3s; }
+    .dg .node text { font-family: var(--mono); fill: var(--ink); }
+    .dg .node.core rect { fill: var(--orange); stroke: var(--orange); }
+    .dg .node.core text { fill: var(--on-orange); font-weight: 700; }
+    .dg .node.hl rect { stroke: var(--orange); stroke-width: 2; }
+    .dg .node.hl:not(.core) rect { fill: var(--orange-soft); }
+    .dg .node.core.hl rect { stroke: var(--ink); }
+    .dg .pk { fill: var(--orange); opacity: 0; transition: opacity .6s; transition-delay: var(--d); }
+    .dg.on .edge { stroke-dashoffset: 0; }
+    .dg.on .node { opacity: 1; transform: none; }
+    .dg.on .pk { opacity: 1; }
+    .d-steps { list-style: none; padding: 0 !important; margin: 14px 0 0 !important; display: grid; gap: 4px; }
+    .d-steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 12px 14px; margin: 0 !important; border: 1px solid transparent; border-radius: 6px; cursor: pointer; transition: background .3s, border-color .3s; }
+    .d-steps li .sn { font-family: var(--display); font-size: 24px; line-height: 1; color: var(--muted); transition: color .3s; }
+    .d-steps li .sl { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .d-steps li p { font-size: 15.5px !important; }
+    .d-steps li.on { background: var(--orange-soft); border-color: rgba(255, 90, 31, .35); }
+    .d-steps li.on .sn, .d-steps li.on .sl { color: var(--orange); }
+    .d-hint { font-size: 13px !important; color: var(--muted); margin-top: 10px !important; }
+    .d-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
+    @media (max-width: 640px) { .d-grid { grid-template-columns: 1fr; } .d-steps li { grid-template-columns: 34px 1fr; padding: 10px; } }
 
     /* ---------- Skills ---------- */
     .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
@@ -537,10 +579,18 @@
     <div class="d-top"><span class="mono" id="dCount"></span><button class="d-close" id="dClose" aria-label="Close">×</button></div>
     <span class="mono co" id="dCo"></span>
     <h3 id="dTitle"></h3>
-    <div class="d-impact"><b id="dImpact"></b><span id="dImpactL"></span></div>
+    <div class="d-tags" id="dTags"></div>
+    <p class="d-lede" id="dLede"></p>
+    <div class="d-metrics" id="dMetrics"></div>
     <h4>Problem</h4><p id="dProblem"></p>
-    <h4>Approach</h4><ul id="dApproach"></ul>
-    <h4>My role</h4><p id="dRole"></p>
+    <h4>How it works</h4>
+    <figure class="d-fig"><figcaption><span id="dFig"></span><span class="live">live</span></figcaption><div id="dFlow"></div></figure>
+    <ol class="d-steps" id="dSteps"></ol>
+    <p class="d-hint">Hover or tap a step (or a box in the diagram) to follow the flow.</p>
+    <div class="d-grid">
+      <div><h4>Approach</h4><ul id="dApproach"></ul></div>
+      <div><h4>My role</h4><p id="dRole"></p></div>
+    </div>
     <div class="d-nav"><button id="dPrev" class="mono">← Prev</button><button id="dNext" class="mono">Next →</button></div>
   </aside>
 
@@ -578,52 +628,173 @@
     // ---------- Case studies ----------
     var CASES = [
       { co: 'Prezent AI', area: 'AI platforms', title: 'Smart Tools', sub: 'API-first agent platform', impact: ['10+', 'Fortune 500 accounts adopted it'],
-        problem: "Enterprise teams wanted Prezent's content automation inside their own systems and agent tools, which needed a real platform: auth, data model and integrations.",
-        approach: ['API-first architecture from day one', 'OAuth, data modeling and webhook-triggered integrations, shipped end to end', '50+ MCP app integrations, prioritized by analyzing agent behaviors'],
-        role: 'Defined the vision and owned the backlog 0→1. Ran structured discovery to choose the integrations with the most impact.' },
+        tags: ['Platform / API', '0-to-1', 'MCP'],
+        lede: 'An API-first agentic automation platform, taken from zero to adoption across 10+ Fortune 500 accounts.',
+        metrics: [['10+', 'Fortune 500 accounts adopted the platform'], ['50+', 'MCP app integrations added'], ['0→1', 'Vision, backlog and launch owned end to end']],
+        fig: 'platform request flow',
+        stages: [{ t: 'Clients', n: ['Enterprise systems', 'Agents'] }, { t: 'Auth', n: ['OAuth'] }, { t: 'Platform', n: ['*Smart Tools API'] }, { t: 'Engine', n: ['Data model', 'Agentic workflows'] }, { t: 'Out', n: ['Webhooks', '50+ MCP apps'] }],
+        steps: ['An enterprise system or an AI agent calls Smart Tools directly, instead of a person using the standalone app.',
+          'OAuth checks who is calling and what they are allowed to access.',
+          'The request arrives at the Smart Tools API, one consistent, documented entry point for every client.',
+          'Agentic workflows run the requested automation on a shared data model.',
+          'Results go back out through webhooks, or straight into 50+ connected MCP apps where people already work.'],
+        problem: "Enterprise teams wanted Prezent's content automation inside their own systems and agent tools, not only in a standalone app. That needs a real platform: authentication, a data model and integrations.",
+        approach: ['API-first architecture from day one', 'OAuth authentication, data modeling and webhook-triggered integrations shipped end to end', '50+ MCP (Model Context Protocol) app integrations, prioritized by analyzing agent behaviors and use cases'],
+        role: 'Defined the product vision and owned the backlog, taking Smart Tools from 0-to-1. Ran structured product discovery to decide which integrations would most improve the user experience.' },
+
       { co: 'Prezent AI', area: 'AI platforms', title: 'My Workspace', sub: 'Enterprise GenAI workspace', impact: ['CEO', 'Award for platform impact at scale'],
-        problem: 'Enterprise GenAI capabilities were scattered. Users needed one central place to work with them.',
+        tags: ['GenAI platform', 'Flagship'],
+        lede: "A centralized enterprise GenAI workspace. Delivered end to end, and the reason for the company's CEO Award.",
+        metrics: [['CEO', 'Award for platform impact at scale'], ['4', 'leadership groups aligned: Eng, DS, Ops, Design']],
+        fig: 'cross-functional delivery',
+        stages: [{ t: 'Partners', n: ['Engineering', 'Data Science', 'Operations', 'Design'] }, { t: 'Plan', n: ['Product roadmap'] }, { t: 'Product', n: ['*My Workspace'] }, { t: 'Users', n: ['Enterprise teams'] }],
+        steps: ['Engineering, Data Science, Operations and Design leadership each bring their own constraints and priorities.',
+          'One product roadmap aligns all four groups on what ships, in what order and why.',
+          'My Workspace brings the scattered enterprise GenAI capabilities together in one place.',
+          'Enterprise teams work from a single workspace instead of jumping between tools.'],
+        problem: 'Enterprise GenAI capabilities were spread out. Users needed one central place to work with them.',
         approach: ['One centralized GenAI workspace for enterprise users', 'Delivery coordinated across four leadership groups'],
-        role: 'Owned the roadmap and led end-to-end delivery with Engineering, Data Science, Operations and Design leadership.' },
+        role: 'Owned the product roadmap and led end-to-end delivery with Engineering, Data Science, Operations and Design leadership.' },
+
       { co: 'Prezent AI', area: 'AI platforms', title: 'RAG for 1,000-page docs', sub: 'Document intelligence', impact: ['1,000+', 'page documents, accurately extracted'],
-        problem: 'Clients needed reliable extraction from documents running past 1,000 pages. Generic chat-with-PDF was not accurate enough.',
-        approach: ['Retrieval-augmented generation grounded in the source', 'Built for document scale, not snippets', 'Paired with dedicated Excel reading'],
-        role: 'Gathered requirements from client use cases and architected the RAG engine.' },
+        tags: ['RAG', 'Document intelligence'],
+        lede: 'A retrieval-augmented generation engine for document intelligence, built to extract accurately from very long enterprise documents.',
+        metrics: [['1,000+', 'page documents handled'], ['Higher accuracy', 'extraction on long enterprise documents']],
+        fig: 'retrieval-augmented generation',
+        stages: [{ t: 'Source', n: ['1,000+ page docs'] }, { t: 'Index', n: ['Chunk', 'Embed + index'] }, { t: 'Retrieve', n: ['Relevant passages'] }, { t: 'Generate', n: ['*RAG engine'] }, { t: 'Output', n: ['Accurate extraction'] }],
+        steps: ['A dense enterprise document of 1,000+ pages is loaded.',
+          'It is split into chunks, and each chunk is embedded and indexed so it can be found by meaning.',
+          'For each question, only the most relevant passages are retrieved, not the whole document.',
+          'The RAG engine grounds the LLM in those passages, so the answer comes from the source rather than the model\'s memory.',
+          'The result is an accurate extraction that can be traced back to the document.'],
+        problem: 'Clients needed reliable extraction from dense enterprise documents that run past 1,000 pages. A generic chat-with-PDF approach was not accurate enough.',
+        approach: ['Retrieval-augmented generation so answers are grounded in the source', 'Built for document scale, not snippets', 'Paired with a dedicated Excel-reading capability'],
+        role: 'Gathered requirements from client use cases and architected the RAG document-intelligence engine.' },
+
       { co: 'Prezent AI', area: 'AI platforms', title: 'Search by meaning', sub: 'Semantic retrieval', impact: ['~30%', 'relevance lift · ~40% faster discovery'],
-        problem: 'Keyword search missed relevant but differently-worded slides, which slowed discovery in a large library.',
-        approach: ['Slide-level metadata', 'Embeddings for semantic similarity', 'Contextual signals in one retrieval layer'],
+        tags: ['Semantic search', 'Embeddings'],
+        lede: 'Metadata-driven semantic retrieval across presentation content, so people find slides by what they mean rather than the exact words.',
+        metrics: [['~30%↑', 'search relevance'], ['~40%↓', 'discovery time']],
+        fig: 'retrieval signals',
+        stages: [{ t: 'Query', n: ['User query'] }, { t: 'Signals', n: ['Slide metadata', 'Embeddings', 'Context signals'] }, { t: 'Rank', n: ['*Semantic retrieval'] }, { t: 'Result', n: ['Relevant slides'] }],
+        steps: ['A user searches in their own words.',
+          'Three signals are computed: slide-level metadata, embedding similarity (meaning) and contextual signals.',
+          'Semantic retrieval combines the three signals into a single ranking.',
+          'The most relevant slides come back, even when they use different words from the query.'],
+        problem: 'Keyword matching misses content that is relevant but worded differently, and in a large presentation library that means slow discovery.',
+        approach: ['Slide-level metadata', 'Embeddings for semantic similarity', 'Contextual signals combined into one retrieval layer'],
         role: 'Defined the retrieval approach: which signals to combine and how to measure relevance.' },
+
       { co: 'Prezent AI', area: 'AI platforms', title: 'Reading complex Excel', sub: 'Structured data', impact: ['★', 'The capability clients singled out'],
-        problem: 'Enterprise knowledge lives in complex spreadsheets, and text-first pipelines lose their structure.',
-        approach: ['Treat spreadsheets as structure, not flat text', 'Feed that structure into the document-intelligence engine'],
-        role: 'Gathered requirements and shaped the capability within the RAG work.' },
+        tags: ['Structured data', 'Client favourite'],
+        lede: 'A capability for reading complex spreadsheets, built alongside the RAG engine and specifically praised by clients.',
+        metrics: [['★', 'Specifically praised by clients']],
+        fig: 'spreadsheet understanding',
+        stages: [{ t: 'Input', n: ['Workbook'] }, { t: 'Parse', n: ['Sheets', 'Tables', 'Values'] }, { t: 'Read', n: ['*Excel reader'] }, { t: 'Use', n: ['RAG engine'] }, { t: 'Output', n: ['Answers'] }],
+        steps: ['A complex workbook with multiple sheets and tables is uploaded.',
+          'Sheets, tables and values are parsed as structure instead of being flattened into plain text.',
+          'The Excel reader keeps the relationships between cells that give the numbers their meaning.',
+          'That structure is passed into the same document-intelligence (RAG) engine.',
+          'Questions about the spreadsheet get correct, grounded answers.'],
+        problem: 'A lot of enterprise knowledge lives in complex spreadsheets, and text-first pipelines lose the structure that gives those numbers meaning.',
+        approach: ['Treat spreadsheets as structure, not flat text', 'Feed that structure into the same document-intelligence engine'],
+        role: 'Gathered the requirements and shaped the capability as part of the RAG engine work.' },
+
       { co: 'Prezent AI', area: 'Agents', title: 'Presentations, edited by agents', sub: 'AI editing agent', impact: ['10%', 'less manual effort'],
-        problem: 'Getting a deck from draft to finished meant lots of repetitive content and layout editing.',
-        approach: ['LLM-driven content automation', 'Automated layout fixes', 'Evaluation criteria and human-oversight guardrails'],
-        role: 'Owned discovery and roadmap prioritization for the editing agent.' },
+        tags: ['AI editing agent', 'LLM'],
+        lede: 'An AI editing agent that automates content and layout work on presentations, with better output and less manual effort.',
+        metrics: [['10%↓', 'less manual effort'], ['Better', 'output quality from content and layout automation']],
+        fig: 'editing agent loop',
+        stages: [{ t: 'Input', n: ['Draft deck'] }, { t: 'Agent', n: ['*AI editing agent'] }, { t: 'Automation', n: ['LLM content', 'Layout'] }, { t: 'Check', n: ['Human review'] }, { t: 'Output', n: ['Polished deck'] }],
+        steps: ['A user brings a draft presentation.',
+          'The AI editing agent reads the deck and works out what needs fixing.',
+          'LLM content automation tightens the copy, and layout automation fixes alignment and structure.',
+          'Evaluation criteria and a human-review guardrail check the changes before they are accepted.',
+          'The user gets a polished deck with much less manual editing.'],
+        problem: 'Getting a presentation from draft to finished means a lot of repetitive content and layout editing. Quality depends on who has the time to do it.',
+        approach: ['LLM-driven content automation', 'Automated layout fixes', 'AI features backed by evaluation criteria and human-oversight guardrails'],
+        role: 'Owned product discovery and roadmap prioritization for the editing agent.' },
+
       { co: 'Prezent AI', area: 'Agents', title: 'Poster generation', sub: 'Generative content', impact: ['Brief →', 'finished poster'],
-        problem: 'A poster must say a lot in one frame, and teams need to know which posters perform.',
-        approach: ['Generate copy and layout from a brief', 'Feed performance data back into the roadmap'],
-        role: 'PM on the AI content surface, connecting generation to analytics.' },
+        tags: ['Generative content'],
+        lede: "Posters are part of Prezent's AI content product, alongside presentations. The same LLM content and layout thinking applies to a single, dense canvas.",
+        metrics: [['Brief → poster', 'Every poster becomes a data point for the roadmap']],
+        fig: 'brief to poster',
+        stages: [{ t: 'Input', n: ['Brief', 'Source content'] }, { t: 'Generate', n: ['*Poster generator'] }, { t: 'Compose', n: ['Copy', 'Layout'] }, { t: 'Output', n: ['Poster'] }, { t: 'Loop', n: ['Performance data'] }],
+        steps: ['The user provides a brief and the source content.',
+          'The poster generator plans how to fit the message onto a single, dense canvas.',
+          'Copy and layout are generated together, so the text fits the design.',
+          'A finished poster is produced.',
+          'Performance data on each poster flows back to the analytics agent and into the roadmap.'],
+        problem: 'A poster has to say a lot in one frame. Copy and layout have to work together, and teams need to know which posters actually perform.',
+        approach: ['Generate copy and layout from a brief', 'Feed poster and content performance back into the roadmap (via the Poster Analytics Agent)'],
+        role: "Product management on Prezent's AI content surface, connecting generation to the analytics that tell the team what to build next." },
+
       { co: 'Prezent AI', area: 'Agents', title: 'Poster analytics agent', sub: 'Recurring insights', impact: ['Auto', 'recurring reporting, no manual pulls'],
-        problem: 'Content-performance reporting was a recurring manual job competing with product work.',
-        approach: ['An agent that runs the analysis on schedule', 'Surfaces insights, not raw tables'],
-        role: 'Built the agent and used its findings to drive roadmap decisions.' },
+        tags: ['Agents', 'Analytics'],
+        lede: 'An agent that automates recurring analytics reporting on poster and content performance.',
+        metrics: [['Auto', 'Recurring reporting runs on its own'], ['Insights → roadmap', 'Findings directly informed product decisions']],
+        fig: 'recurring report agent',
+        stages: [{ t: 'Data', n: ['Poster performance', 'Content performance'] }, { t: 'Agent', n: ['*Analytics agent'] }, { t: 'Output', n: ['Recurring report', 'Insights'] }, { t: 'Decision', n: ['Roadmap'] }],
+        steps: ['Poster and content performance data are collected continuously.',
+          'On a schedule, the analytics agent runs the recurring analysis on its own, with no manual data pulls.',
+          'It produces the recurring report and surfaces insights instead of raw tables.',
+          'The team uses those insights to decide what to build next.'],
+        problem: 'Reporting on poster and content performance was a recurring manual job, and it competed with the product work it was meant to inform.',
+        approach: ['An agent that runs the recurring analysis on its own schedule', 'Surfaces insights directly instead of raw tables'],
+        role: 'Built the agent, then used what it surfaced to make roadmap and product decisions.' },
+
       { co: 'Prezent AI', area: 'Agents', title: 'Support knowledge agent', sub: 'KB chatbot + Jira', impact: ['Auto', 'bug escalation to Jira'],
-        problem: 'Support load and the ticket backlog grew, and bugs reached engineers slowly.',
-        approach: ['Chatbot fed with release notes, FAQs, Confluence and support history', 'Automated Jira escalation for reported issues'],
+        tags: ['Knowledge base', 'Automation'],
+        lede: "An AI knowledge-base chatbot that answers from the company's own docs, and escalates real bugs to Jira automatically.",
+        metrics: [['Lighter', 'support load and a smaller ticket backlog'], ['Auto', 'bug escalation to Jira for faster fixes']],
+        fig: 'answer or escalate',
+        stages: [{ t: 'Knowledge', n: ['Release notes', 'FAQs', 'Confluence', 'Support history'] }, { t: 'Agent', n: ['*KB chatbot'] }, { t: 'Route', n: ['Answer', 'Jira escalation'] }],
+        steps: ['Release notes, FAQs, Confluence pages and past support history are loaded as the knowledge base.',
+          'The KB chatbot answers user questions from that knowledge, not from guesswork.',
+          'Known questions get an answer straight away. Real bugs are escalated to Jira automatically, with the details attached.'],
+        problem: 'Support load and the ticket backlog grew, and bug reports took too long to reach the people who could fix them.',
+        approach: ['Chatbot fed with release notes, FAQs, Confluence pages and support history', 'Automated Jira escalation when an issue is reported'],
         role: 'Built the knowledge-base chatbot and the escalation flow.' },
+
       { co: 'ZS Associates', area: 'Agents', title: 'ZAIDYN forecasting agent', sub: 'Pharma self-serve', impact: ['1,500+', 'analyst hours saved a year'],
-        problem: 'Drug forecasts needed analysts to combine 15+ inputs by hand for every scenario, and onboarding was slow.',
-        approach: ['Self-service agent that takes the 15+ inputs directly', 'Simpler onboarding: market assumptions, priority HCPs/KOLs, engagement plans', 'User research and discovery to drive adoption'],
-        role: 'Defined the vision and roadmap; led product, engineering, analytics and client teams (Agile/Scrum). 60% less manual effort, 75% faster onboarding, 30%+ more activations, 25% faster time-to-market.' },
+        tags: ['ZAIDYN', 'Pharma', 'Self-serve'],
+        lede: 'A self-service drug-forecasting agent for ZAIDYN, replacing an analyst-run process with one pharma teams run themselves.',
+        metrics: [['1,500+', 'analyst hours saved a year'], ['60%↓', 'manual effort'], ['75%↓', 'onboarding time'], ['30%+↑', 'user activations'], ['25%↓', 'time-to-market']],
+        fig: '15+ input forecast',
+        stages: [{ t: '15+ inputs', n: ['Prevalence', 'Market share', 'Compliance', '+12 more'] }, { t: 'Agent', n: ['*Forecasting agent'] }, { t: 'Output', n: ['Drug forecast', 'Priority HCPs / KOLs', 'Engagement plans'] }],
+        steps: ['Users enter the 15+ forecast inputs themselves: prevalence, market share, compliance and more.',
+          'The self-service forecasting agent combines them into a scenario, with no analyst in the loop.',
+          'It produces the drug forecast, the priority HCPs and KOLs, and targeted engagement plans.'],
+        problem: 'Drug forecasts depended on analysts combining 15+ inputs by hand for every scenario, and onboarding new users was slow.',
+        approach: ['A self-service agent that takes the 15+ inputs directly', 'Simplified onboarding: users configure market assumptions, identify priority HCPs and KOLs, and build targeted engagement plans', 'User research and discovery to drive adoption'],
+        role: 'Defined and executed the product vision and roadmap, and led product, engineering, analytics and client teams through Agile/Scrum delivery.' },
+
       { co: 'Aditya Birla Capital', area: 'Fintech', title: 'Next-best offer', sub: 'Insurance recommendations', impact: ['20%+', 'conversion · 15%+ revenue'],
-        problem: 'Field sales guessed which product fit each customer, so conversion depended on individual judgement.',
-        approach: ['Recommend from income, age, goals, risk appetite and affordability', 'Deliver the next-best product straight to field sales'],
-        role: 'Defined the requirements and built the recommendation engine.' },
+        tags: ['Recommendation', 'Insurance'],
+        lede: 'A data-driven insurance recommendation engine that tells field sales teams the next-best product for each customer.',
+        metrics: [['20%+↑', 'conversion'], ['15%+↑', 'revenue']],
+        fig: 'customer to recommendation',
+        stages: [{ t: 'Customer', n: ['Income', 'Age', 'Goals', 'Risk appetite', 'Affordability'] }, { t: 'Model', n: ['*Recommendation engine'] }, { t: 'Action', n: ['Next-best product'] }, { t: 'Channel', n: ['Field sales'] }],
+        steps: ['Five customer signals are captured: income, age, goals, risk appetite and affordability.',
+          'The recommendation engine scores which product best fits that customer.',
+          'It picks the next-best product for that customer.',
+          'The recommendation goes straight to the field sales rep, so they no longer have to guess.'],
+        problem: 'Field sales teams had to guess which product fit each customer, so conversion depended on individual judgement.',
+        approach: ['Recommend from five customer signals: income, age, goals, risk appetite and affordability', 'Deliver the next-best product straight to field sales'],
+        role: 'Defined the product requirements and built the recommendation engine.' },
+
       { co: 'Aditya Birla Capital', area: 'Fintech', title: 'Pan-India incentive engine', sub: 'ABSLI automation', impact: ['70%+', 'less manual processing'],
-        problem: 'Incentives across branches were calculated by hand from many metrics, which was slow and inconsistent.',
-        approach: ['One engine for targets, activations, premium, persistency, product mix and compliance', 'Rolled out Pan-India'],
+        tags: ['ABSLI', 'Automation'],
+        lede: 'An incentive automation product for ABSLI that replaced manual calculation across branches nationwide.',
+        metrics: [['70%+↓', 'manual processing time across branches'], ['6', 'metric families automated']],
+        fig: 'six-metric incentive calc',
+        stages: [{ t: 'Metrics', n: ['Sales targets', 'Activations', 'Premium', 'Persistency', 'Product mix', 'Compliance'] }, { t: 'Engine', n: ['*Incentive engine'] }, { t: 'Output', n: ['Pan-India branches'] }],
+        steps: ['Six metric families are pulled for each person: sales targets, activations, premium achievement, persistency, product mix and compliance.',
+          'The incentive engine applies one consistent set of rules to all of them.',
+          'Incentives are calculated for every branch across India, without manual spreadsheets.'],
+        problem: 'Incentives across branches were calculated by hand from many metrics, which took time and was hard to keep consistent.',
+        approach: ['One engine covering sales targets, activations, premium achievement, persistency, product mix and compliance', 'Rolled out Pan-India'],
         role: 'Gathered requirements and aligned stakeholders to design the product.' },
     ];
     var casesEl = document.getElementById('cases');
@@ -654,21 +825,106 @@
     // Drawer
     var drawer = document.getElementById('drawer'), cur = 0, lastFocus = null;
     function $(id) { return document.getElementById(id); }
+    // Flow diagram (vertical pipeline, animated): stages of boxes joined by curved edges with moving packets.
+    var NS = 'http://www.w3.org/2000/svg', play = null, active = 0, hovering = false;
+    function svgEl(tag, attrs, parent) { var n = document.createElementNS(NS, tag); for (var k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; }
+    function wrap(str, max) {
+      var words = str.split(' '), lines = [], cur = '';
+      words.forEach(function (w) { if ((cur + ' ' + w).trim().length > max && cur) { lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); });
+      if (cur) lines.push(cur); return lines;
+    }
+    function drawFlow(host, stages, label) {
+      var avail = host.clientWidth || 640, VW = Math.round(Math.min(640, Math.max(300, avail))), narrow = VW < 480;
+      var gap = narrow ? 6 : 10, fs = narrow ? 11.5 : 13, cw = narrow ? 7 : 7.9, lh = narrow ? 14 : 16, titleH = 26, stageGap = narrow ? 28 : 34, y = 0, nodes = [], titles = [];
+      stages.forEach(function (st, k) {
+        titles.push({ y: y + 13, t: st.t, k: k });
+        y += titleH;
+        var per = st.n.length === 4 ? 2 : Math.min(st.n.length, narrow ? 2 : 3);
+        for (var r = 0; r < st.n.length; r += per) {
+          var row = st.n.slice(r, r + per), nw = (VW - gap * (row.length - 1)) / row.length, max = Math.floor((nw - 16) / cw);
+          var items = row.map(function (raw) { return { core: raw.charAt(0) === '*', lines: wrap(raw.replace('*', ''), max) }; });
+          var h = 22 + Math.max.apply(null, items.map(function (it) { return it.lines.length; })) * lh;
+          items.forEach(function (it, j) { nodes.push({ k: k, x: j * (nw + gap), y: y, w: nw, h: h, core: it.core, lines: it.lines }); });
+          y += h + gap;
+        }
+        y += stageGap - gap;
+      });
+      var H = y - stageGap + 6;
+      host.innerHTML = '';
+      var svg = svgEl('svg', { class: 'dg', viewBox: '-2 -2 ' + (VW + 4) + ' ' + (H + 4), role: 'img', 'aria-label': label }, host);
+      titles.forEach(function (t) {
+        var tx = svgEl('text', { x: 0, y: t.y, class: 'st', 'font-size': 11.5, 'data-k': t.k }, svg);
+        tx.textContent = String(t.k + 1).padStart(2, '0') + ' / ' + t.t.toUpperCase();
+      });
+      var eg = svgEl('g', {}, svg), pg = svgEl('g', {}, svg), ng = svgEl('g', {}, svg), S = stages.length, i = 0;
+      for (var k = 0; k < S - 1; k++) {
+        var a = nodes.filter(function (n) { return n.k === k; }), b = nodes.filter(function (n) { return n.k === k + 1; });
+        var pairs = [];
+        if (a.length > 1 && a.length === b.length) a.forEach(function (n, j) { pairs.push([n, b[j]]); });
+        else a.forEach(function (n) { b.forEach(function (m) { pairs.push([n, m]); }); });
+        pairs.forEach(function (p) {
+          var x1 = p[0].x + p[0].w / 2, y1 = p[0].y + p[0].h, x2 = p[1].x + p[1].w / 2, y2 = p[1].y, dy = (y2 - y1) * .55;
+          var d = 'M' + x1 + ',' + y1 + ' C' + x1 + ',' + (y1 + dy) + ' ' + x2 + ',' + (y2 - dy) + ' ' + x2 + ',' + y2;
+          var e = svgEl('path', { d: d, class: 'edge', pathLength: 1, 'data-k': k }, eg);
+          e.style.setProperty('--d', (0.3 + k * 0.28).toFixed(2) + 's');
+          if (!reduced) {
+            var c = svgEl('circle', { r: 3, class: 'pk' }, pg), dur = 1.6 + ((i * 37) % 13) / 10;
+            c.style.setProperty('--d', (1 + k * 0.28).toFixed(2) + 's');
+            svgEl('animateMotion', { dur: dur + 's', repeatCount: 'indefinite', path: d, begin: (-((i * 0.53) % dur)).toFixed(2) + 's', keyPoints: '0;1', keyTimes: '0;1', calcMode: 'spline', keySplines: '.45 0 .55 1' }, c);
+          }
+          i++;
+        });
+      }
+      nodes.forEach(function (n) {
+        var g = svgEl('g', { class: 'node' + (n.core ? ' core' : ''), 'data-k': n.k }, ng);
+        g.style.setProperty('--d', (0.1 + n.k * 0.28).toFixed(2) + 's');
+        svgEl('rect', { x: n.x, y: n.y, width: n.w, height: n.h, rx: 6 }, g);
+        n.lines.forEach(function (ln, j) {
+          var t = svgEl('text', { x: n.x + n.w / 2, y: n.y + 11 + lh * (j + 1) - 3, 'font-size': fs, 'text-anchor': 'middle' }, g);
+          t.textContent = ln;
+        });
+      });
+      requestAnimationFrame(function () { requestAnimationFrame(function () { svg.classList.add('on'); }); });
+    }
+    function highlight(k) {
+      active = k;
+      $('dFlow').querySelectorAll('[data-k]').forEach(function (n) { n.classList.toggle('hl', +n.getAttribute('data-k') === k); });
+      $('dSteps').querySelectorAll('li').forEach(function (li, j) { li.classList.toggle('on', j === k); });
+    }
+    function startPlay() {
+      clearInterval(play);
+      if (reduced) return;
+      play = setInterval(function () { if (!hovering) highlight((active + 1) % CASES[cur].stages.length); }, 2200);
+    }
     function fill(i) {
       cur = (i + CASES.length) % CASES.length;
       var c = CASES[cur];
       $('dCount').textContent = String(cur + 1).padStart(2, '0') + ' / ' + CASES.length;
       $('dCo').textContent = c.co + ' · ' + c.sub;
       $('dTitle').textContent = c.title;
-      $('dImpact').textContent = c.impact[0];
-      $('dImpactL').textContent = c.impact[1];
+      $('dTags').innerHTML = [c.co].concat(c.tags).map(function (t) { return '<span>' + t + '</span>'; }).join('');
+      $('dLede').textContent = c.lede;
+      $('dMetrics').innerHTML = c.metrics.map(function (m) { return '<div><b' + (m[0].length > 7 ? ' class="sm"' : '') + '>' + m[0] + '</b><span>' + m[1] + '</span></div>'; }).join('');
       $('dProblem').textContent = c.problem;
+      $('dFig').textContent = 'fig.' + String(cur + 1).padStart(2, '0') + ' · ' + c.fig;
+      drawFlow($('dFlow'), c.stages, c.title + ': ' + c.steps.join(' '));
+      $('dSteps').innerHTML = c.steps.map(function (st, j) {
+        return '<li data-k="' + j + '"><span class="sn">' + String(j + 1).padStart(2, '0') + '</span><div><span class="sl">' + c.stages[j].t + '</span><p>' + st + '</p></div></li>';
+      }).join('');
       $('dApproach').innerHTML = c.approach.map(function (a) { return '<li>' + a + '</li>'; }).join('');
       $('dRole').textContent = c.role;
+      highlight(0); startPlay();
       drawer.scrollTop = 0;
     }
+    $('dSteps').addEventListener('mouseover', function (e) { var li = e.target.closest('li'); if (li) { hovering = true; highlight(+li.dataset.k); } });
+    $('dSteps').addEventListener('mouseleave', function () { hovering = false; });
+    $('dSteps').addEventListener('click', function (e) { var li = e.target.closest('li'); if (li) { highlight(+li.dataset.k); startPlay(); } });
+    $('dFlow').addEventListener('click', function (e) { var n = e.target.closest('.node'); if (n) { highlight(+n.getAttribute('data-k')); startPlay(); } });
+    var rz; addEventListener('resize', function () {
+      clearTimeout(rz); rz = setTimeout(function () { if (document.body.classList.contains('drawer-open')) { drawFlow($('dFlow'), CASES[cur].stages, CASES[cur].title); highlight(active); } }, 200);
+    });
     function open(i) { lastFocus = document.activeElement; fill(i); document.body.classList.add('drawer-open'); drawer.setAttribute('aria-hidden', 'false'); $('dClose').focus(); }
-    function close() { document.body.classList.remove('drawer-open'); drawer.setAttribute('aria-hidden', 'true'); if (lastFocus) lastFocus.focus(); }
+    function close() { clearInterval(play); document.body.classList.remove('drawer-open'); drawer.setAttribute('aria-hidden', 'true'); if (lastFocus) lastFocus.focus(); }
     casesEl.addEventListener('click', function (e) { var r = e.target.closest('.case-row'); if (r) open(+r.dataset.i); });
     $('dClose').onclick = close; $('scrim').onclick = close;
     $('dPrev').onclick = function () { fill(cur - 1); }; $('dNext').onclick = function () { fill(cur + 1); };

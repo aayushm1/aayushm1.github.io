@@ -164,8 +164,8 @@
     /* ---------- Projects ---------- */
     .projects { display: grid; gap: 40px; }
     .project { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; overflow: hidden; transition: border-color .4s; }
-    .project:nth-child(2) { grid-template-columns: 1fr 1.25fr; }
-    .project:nth-child(2) .shot { order: 2; }
+    .project:nth-child(even) { grid-template-columns: 1fr 1.25fr; }
+    .project:nth-child(even) .shot { order: 2; }
     .project:hover { border-color: var(--orange); }
     .shot { position: relative; overflow: hidden; min-height: 380px; background: var(--bg-2); }
     .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 1.2s var(--ease); }
@@ -288,8 +288,8 @@
       .wipe { clip-path: none; }
     }
     @media (max-width: 1080px) {
-      .about, .project, .project:nth-child(2) { grid-template-columns: 1fr; }
-      .project:nth-child(2) .shot { order: 0; }
+      .about, .project, .project:nth-child(even) { grid-template-columns: 1fr; }
+      .project:nth-child(even) .shot { order: 0; }
       .about { gap: 50px; } .portrait { max-width: 380px; }
       .skills { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; row-gap: 40px; } .steps::before, .steps .bar { display: none; }
@@ -420,6 +420,16 @@
           <p class="reveal">Personal projects where I own everything: problem framing, PRD, prototype, metrics and write-up.</p></div>
         </div>
         <div class="projects">
+          <article class="project reveal">
+            <a class="shot" href="https://aayushm1.github.io/renewal-decision-room/" target="_blank" rel="noopener" data-cursor="big"><img src="img/renewal-decision-room.jpg" alt="Renewal Decision Room screenshot" loading="lazy" /><span class="live mono"><span class="dot green"></span>Live</span></a>
+            <div class="p-body">
+              <span class="mono">B2B SaaS · AI agents · Procurement</span>
+              <h3>Renewal Decision Room</h3>
+              <p>SaaS tools find unused licenses, but renewals still auto-renew because nobody turns the insight into a decision before the notice deadline. I designed an AI renewal agent that recommends renew, downsize, consolidate or cancel with evidence and an explained confidence score, then drafts the vendor email, IT plan and CFO brief. <em>The rules do the maths, never the AI.</em></p>
+              <div class="p-metrics"><div><b>$355K</b><span>savings found on $1.2M renewing</span></div><div><b>4 → 1</b><span>options scored, one verdict + why-not</span></div><div><b>3 screens</b><span>alert → decision → action</span></div></div>
+              <div class="p-links"><a class="pill-btn magnet" href="https://aayushm1.github.io/renewal-decision-room/app.html" target="_blank" rel="noopener">Live demo ↗</a><a class="pill-btn ghost" href="https://aayushm1.github.io/renewal-decision-room/" target="_blank" rel="noopener">Case study</a><a class="pill-btn ghost" href="https://github.com/aayushm1/renewal-decision-room/blob/main/HOW-IT-WORKS.md" target="_blank" rel="noopener">How it works</a></div>
+            </div>
+          </article>
           <article class="project reveal">
             <a class="shot" href="https://aayushm1.github.io/fraud-rules-playground/" target="_blank" rel="noopener" data-cursor="big"><img src="img/fraud-rules-playground.jpg" alt="Fraud Rules Playground screenshot" loading="lazy" /><span class="live mono"><span class="dot green"></span>Live</span></a>
             <div class="p-body">

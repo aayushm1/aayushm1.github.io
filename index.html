@@ -161,30 +161,36 @@
     .pillar h4 { font-family: var(--sans); font-weight: 600; font-size: 17px; margin: 8px 0 6px; }
     .pillar p { margin: 0; font-size: 14.5px; color: var(--muted); }
 
-    /* ---------- Projects ---------- */
-    .projects { display: grid; gap: 40px; }
-    .project { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; overflow: hidden; transition: border-color .4s; }
-    .project:nth-child(even) { grid-template-columns: 1fr 1.25fr; }
-    .project:nth-child(even) .shot { order: 2; }
-    .project:hover { border-color: var(--orange); }
-    .shot { position: relative; overflow: hidden; min-height: 380px; background: var(--bg-2); }
-    .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 1.2s var(--ease); }
-    .project:hover .shot img { transform: scale(1.05); }
-    .shot .live { position: absolute; top: 18px; left: 18px; background: var(--bg); color: var(--ink); padding: 7px 12px; border-radius: 99px; display: flex; align-items: center; gap: 8px; }
-    .p-body { padding: 44px; display: flex; flex-direction: column; }
-    .p-body .mono { color: var(--orange); }
-    .p-body h3 { font-family: var(--display); font-size: clamp(30px, 3vw, 42px); line-height: 1; letter-spacing: -.02em; text-transform: uppercase; margin: 14px 0 16px; }
-    .p-body > p { margin: 0 0 24px; font-size: 16px; }
-    .p-metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); margin-bottom: 28px; }
-    .p-metrics div { padding: 16px 12px 0 0; }
-    .p-metrics b { display: block; font-family: var(--display); font-size: 24px; color: var(--ink); letter-spacing: -.02em; }
-    .p-metrics span { font-size: 12.5px; color: var(--muted); line-height: 1.35; display: block; }
-    .p-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; }
-    .soon-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-    .soon { border: 1px dashed var(--line-2); padding: 26px 30px; border-radius: 6px; display: flex; gap: 18px; align-items: baseline; }
-    .soon .mono { color: var(--orange); white-space: nowrap; font-size: 11.5px; }
-    .soon h4 { font-family: var(--sans); font-weight: 600; font-size: 17px; margin-bottom: 4px; }
-    .soon p { margin: 0; font-size: 14.5px; color: var(--muted); }
+    /* ---------- Projects (card grid) ---------- */
+    .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .pcard { --accent: var(--orange); position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 22px 22px 24px; transition: border-color .4s var(--ease), transform .5s var(--ease), box-shadow .5s var(--ease); }
+    .pcard:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 24px 60px -30px var(--accent); }
+    .pc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .pc-top .mono { color: var(--accent); font-size: 12px; }
+    .pc-ring { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--accent); display: grid; place-items: center; }
+    .pc-ring::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .pc-shot { position: relative; display: block; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--accent); background: var(--bg-2); }
+    .pc-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 1.2s var(--ease); }
+    .pcard:hover .pc-shot img { transform: scale(1.06); }
+    .pc-shot .new { position: absolute; top: 12px; right: 12px; background: var(--accent); color: #fff; font-size: 10.5px; padding: 5px 10px; border-radius: 99px; letter-spacing: .12em; }
+    .pc-cat { color: var(--accent); font-weight: 600; font-size: 14.5px; margin: 20px 0 4px; }
+    .pcard h3 { font-family: var(--display); font-size: clamp(24px, 2.1vw, 30px); line-height: 1.05; letter-spacing: -.02em; text-transform: uppercase; margin: 0 0 12px; }
+    .pcard > p { margin: 0 0 18px; font-size: 15px; color: var(--body); }
+    .pc-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--line); padding-top: 14px; margin-bottom: 18px; }
+    .pc-metrics b { display: block; font-family: var(--display); font-size: 19px; color: var(--ink); letter-spacing: -.02em; line-height: 1.2; }
+    .pc-metrics span { font-size: 11.5px; color: var(--muted); line-height: 1.3; display: block; margin-top: 2px; }
+    .pc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .pc-tags span { font-size: 13px; padding: 6px 13px; border-radius: 99px; border: 1px solid var(--line-2); color: var(--body); }
+    .pc-links { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .pc-open { color: var(--accent); font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; }
+    .pc-open i { font-style: normal; transition: transform .3s var(--ease); }
+    .pc-open:hover i { transform: translateX(5px); }
+    .pc-sub { display: flex; gap: 14px; }
+    .pc-sub a { font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line-2); }
+    .pc-sub a:hover { color: var(--ink); border-color: var(--accent); }
+    .pcard.soon { border-style: dashed; background: transparent; }
+    .pcard.soon:hover { transform: none; box-shadow: none; }
+    .pc-soon-art { aspect-ratio: 16 / 10; border-radius: 14px; border: 1.5px dashed var(--line-2); display: grid; place-items: center; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: repeating-linear-gradient(135deg, transparent 0 14px, var(--line) 14px 15px); }
 
     /* ---------- Case index ---------- */
     .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
@@ -330,8 +336,8 @@
       .wipe { clip-path: none; }
     }
     @media (max-width: 1080px) {
-      .about, .project, .project:nth-child(even) { grid-template-columns: 1fr; }
-      .project:nth-child(even) .shot { order: 0; }
+      .about { grid-template-columns: 1fr; }
+      .pgrid { grid-template-columns: 1fr 1fr; }
       .about { gap: 50px; } .portrait { max-width: 380px; }
       .skills { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; row-gap: 40px; } .steps::before, .steps .bar { display: none; }
@@ -347,10 +353,8 @@
       .hero-foot { grid-template-columns: 1fr; }
       .scroll-ind { display: none; }
       .stats { grid-template-columns: 1fr 1fr; } .stat:nth-child(2) { border-right: 0; } .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-      .pillars, .skills, .soon-row, .edu { grid-template-columns: 1fr; }
+      .pillars, .skills, .pgrid, .edu { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
-      .p-body { padding: 28px; }
-      .shot { min-height: 220px; }
       .case-row { grid-template-columns: 1fr 36px; } .case-row .n, .case-row .m { display: none; }
       .job { grid-template-columns: 1fr; gap: 12px; }
       .drawer { padding: 24px; }
@@ -461,41 +465,63 @@
           <div><h2 class="split">Built end to end. <span class="o">Live to try.</span></h2>
           <p class="reveal">Personal projects where I own everything: problem framing, PRD, prototype, metrics and write-up.</p></div>
         </div>
-        <div class="projects">
-          <article class="project reveal">
-            <a class="shot" href="https://aayushm1.github.io/renewal-decision-room/" target="_blank" rel="noopener" data-cursor="big"><img src="img/renewal-decision-room.jpg" alt="Renewal Decision Room screenshot" loading="lazy" /><span class="live mono"><span class="dot green"></span>Live</span></a>
-            <div class="p-body">
-              <span class="mono">B2B SaaS · AI agents · Procurement</span>
-              <h3>Renewal Decision Room</h3>
-              <p>SaaS tools find unused licenses, but renewals still auto-renew because nobody turns the insight into a decision before the notice deadline. I designed an AI renewal agent that recommends renew, downsize, consolidate or cancel with evidence and an explained confidence score, then drafts the vendor email, IT plan and CFO brief. <em>The rules do the maths, never the AI.</em></p>
-              <div class="p-metrics"><div><b>$355K</b><span>savings found on $1.2M renewing</span></div><div><b>4 → 1</b><span>options scored, one verdict + why-not</span></div><div><b>3 screens</b><span>alert → decision → action</span></div></div>
-              <div class="p-links"><a class="pill-btn magnet" href="https://aayushm1.github.io/renewal-decision-room/app.html" target="_blank" rel="noopener">Live demo ↗</a><a class="pill-btn ghost" href="https://aayushm1.github.io/renewal-decision-room/" target="_blank" rel="noopener">Case study</a><a class="pill-btn ghost" href="https://github.com/aayushm1/renewal-decision-room/blob/main/HOW-IT-WORKS.md" target="_blank" rel="noopener">How it works</a></div>
-            </div>
+        <div class="pgrid">
+          <article class="pcard reveal" style="--accent:#4C8DFF">
+            <div class="pc-top"><span class="mono">01 / Live</span><span class="pc-ring"></span></div>
+            <a class="pc-shot" href="https://aayushm1.github.io/proposal-lens/" target="_blank" rel="noopener" data-cursor="big"><img src="img/proposal-lens.jpg" alt="Proposal Lens screenshot" loading="lazy" /><span class="new mono">New</span></a>
+            <div class="pc-cat">AI hotel proposal analyst · Event tech</div>
+            <h3>Proposal Lens</h3>
+            <p>Event planners shortlist hotels on the quoted room rate, but fees, F&amp;B minimums and penalty clauses decide the real price. An AI analyst that turns 5 messy proposals into one <em>true total cost</em>, flags risky clauses against market benchmarks, stress-tests an attendance drop and drafts the counter-proposal.</p>
+            <div class="pc-metrics"><div><b>$273K</b><span>hidden cost surfaced across 5 proposals</span></div><div><b>#2 → #5</b><span>"cheap" hotel is really the priciest</span></div><div><b>&lt; 1 hr</b><span>to a defensible pick (was 3 days)</span></div></div>
+            <div class="pc-tags"><span>Contract AI</span><span>Decision UX</span><span>Product Strategy</span></div>
+            <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/proposal-lens/" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://github.com/aayushm1/proposal-lens#readme" target="_blank" rel="noopener">Case study</a><a href="https://github.com/aayushm1/proposal-lens/blob/main/HOW-IT-WORKS.md" target="_blank" rel="noopener">How it works</a></span></div>
           </article>
-          <article class="project reveal">
-            <a class="shot" href="https://aayushm1.github.io/fraud-rules-playground/" target="_blank" rel="noopener" data-cursor="big"><img src="img/fraud-rules-playground.jpg" alt="Fraud Rules Playground screenshot" loading="lazy" /><span class="live mono"><span class="dot green"></span>Live</span></a>
-            <div class="p-body">
-              <span class="mono">Fintech · Payments risk</span>
-              <h3>Fraud Rules Playground</h3>
-              <p>A no-code simulator where payment risk teams back-test fraud rules on last month's transactions before going live, so every change shows fraud caught vs good customers blocked, priced in rupees.</p>
-              <div class="p-metrics"><div><b>37→82%</b><span>fraud caught</span></div><div><b>−91%</b><span>good customers blocked</span></div><div><b>−84%</b><span>total cost of fraud</span></div></div>
-              <div class="p-links"><a class="pill-btn magnet" href="https://aayushm1.github.io/fraud-rules-playground/" target="_blank" rel="noopener">Live demo ↗</a><a class="pill-btn ghost" href="https://github.com/aayushm1/fraud-rules-playground" target="_blank" rel="noopener">Case study</a></div>
-            </div>
+          <article class="pcard reveal" style="--accent:#A78BFA">
+            <div class="pc-top"><span class="mono">02 / Live</span><span class="pc-ring"></span></div>
+            <a class="pc-shot" href="https://aayushm1.github.io/renewal-decision-room/app.html" target="_blank" rel="noopener" data-cursor="big"><img src="img/renewal-decision-room.jpg" alt="Renewal Decision Room screenshot" loading="lazy" /></a>
+            <div class="pc-cat">AI renewal agent · B2B SaaS</div>
+            <h3>Renewal Decision Room</h3>
+            <p>SaaS tools find unused licenses, but renewals still auto-renew because nobody turns the insight into a decision before the notice deadline. An AI agent recommends renew, downsize, consolidate or cancel with evidence and an explained confidence score, then drafts the vendor email, IT plan and CFO brief.</p>
+            <div class="pc-metrics"><div><b>$355K</b><span>savings found on $1.2M renewing</span></div><div><b>4 → 1</b><span>options scored, one verdict + why-not</span></div><div><b>3 screens</b><span>alert → decision → action</span></div></div>
+            <div class="pc-tags"><span>Agentic UX</span><span>Procurement</span><span>AI Systems</span></div>
+            <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/renewal-decision-room/app.html" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://aayushm1.github.io/renewal-decision-room/" target="_blank" rel="noopener">Case study</a><a href="https://github.com/aayushm1/renewal-decision-room/blob/main/HOW-IT-WORKS.md" target="_blank" rel="noopener">How it works</a></span></div>
           </article>
-          <article class="project reveal">
-            <a class="shot" href="https://aayushm1.github.io/sidelinereel/" target="_blank" rel="noopener" data-cursor="big"><img src="img/sidelinereel.jpg" alt="SidelineReel screenshot" loading="lazy" /><span class="live mono"><span class="dot green"></span>Live</span></a>
-            <div class="p-body">
-              <span class="mono">AI trust · Consumer sports</span>
-              <h3>SidelineReel</h3>
-              <p>AI tags youth-sports clips to each player's reel, but look-alike jersey numbers put clips in the wrong kid's reel. I designed a confidence gate: a one-tap coach confirm for doubtful clips. Anything unconfirmed is <em>left out, never guessed.</em></p>
-              <div class="p-metrics"><div><b>3 of 5</b><span>tickets were wrong-kid reels</span></div><div><b>1 tap</b><span>coach review per clip</span></div><div><b>0</b><span>guessed clips sent</span></div></div>
-              <div class="p-links"><a class="pill-btn magnet" href="https://aayushm1.github.io/sidelinereel/" target="_blank" rel="noopener">Live demo ↗</a><a class="pill-btn ghost" href="https://github.com/aayushm1/sidelinereel" target="_blank" rel="noopener">Code</a></div>
-            </div>
+          <article class="pcard reveal" style="--accent:#3DDC84">
+            <div class="pc-top"><span class="mono">03 / Live</span><span class="pc-ring"></span></div>
+            <a class="pc-shot" href="https://aayushm1.github.io/fraud-rules-playground/" target="_blank" rel="noopener" data-cursor="big"><img src="img/fraud-rules-playground.jpg" alt="Fraud Rules Playground screenshot" loading="lazy" /></a>
+            <div class="pc-cat">Payments risk simulator · Fintech</div>
+            <h3>Fraud Rules Playground</h3>
+            <p>A no-code simulator where payment risk teams back-test fraud rules on last month's transactions before going live, so every change shows fraud caught vs. good customers blocked, priced in rupees.</p>
+            <div class="pc-metrics"><div><b>37→82%</b><span>fraud caught</span></div><div><b>−91%</b><span>good customers blocked</span></div><div><b>−84%</b><span>total cost of fraud</span></div></div>
+            <div class="pc-tags"><span>Fintech</span><span>Simulation</span><span>Risk UX</span></div>
+            <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/fraud-rules-playground/" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://github.com/aayushm1/fraud-rules-playground" target="_blank" rel="noopener">Case study</a></span></div>
           </article>
-        </div>
-        <div class="soon-row">
-          <div class="soon reveal"><span class="mono">In progress</span><div><h4>Loan Decision Engine</h4><p>Credit policy rules, scorecards and approval vs default trade-offs.</p></div></div>
-          <div class="soon reveal"><span class="mono">In progress</span><div><h4>Card &amp; BNPL unit economics</h4><p>Interchange, credit losses, cost of funds and CAC.</p></div></div>
+          <article class="pcard reveal" style="--accent:#F5A524">
+            <div class="pc-top"><span class="mono">04 / Live</span><span class="pc-ring"></span></div>
+            <a class="pc-shot" href="https://aayushm1.github.io/sidelinereel/" target="_blank" rel="noopener" data-cursor="big"><img src="img/sidelinereel.jpg" alt="SidelineReel screenshot" loading="lazy" /></a>
+            <div class="pc-cat">AI confidence gate · Consumer sports</div>
+            <h3>SidelineReel</h3>
+            <p>AI tags youth-sports clips to each player's reel, but look-alike jersey numbers put clips in the wrong kid's reel. A confidence gate adds a one-tap coach confirm for doubtful clips. Anything unconfirmed is <em>left out, never guessed.</em></p>
+            <div class="pc-metrics"><div><b>3 of 5</b><span>tickets were wrong-kid reels</span></div><div><b>1 tap</b><span>coach review per clip</span></div><div><b>0</b><span>guessed clips sent</span></div></div>
+            <div class="pc-tags"><span>AI Trust</span><span>Consumer</span><span>UX Design</span></div>
+            <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/sidelinereel/" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://github.com/aayushm1/sidelinereel" target="_blank" rel="noopener">Code</a></span></div>
+          </article>
+          <article class="pcard soon reveal">
+            <div class="pc-top"><span class="mono" style="color:var(--muted)">05 / In progress</span><span class="pc-ring" style="border-color:var(--line-2)"></span></div>
+            <div class="pc-soon-art">Building now</div>
+            <div class="pc-cat" style="color:var(--muted)">Fintech</div>
+            <h3>Loan Decision Engine</h3>
+            <p>Credit policy rules, scorecards and approval vs. default trade-offs.</p>
+            <div class="pc-tags" style="margin-bottom:0"><span>Lending</span><span>Credit Risk</span></div>
+          </article>
+          <article class="pcard soon reveal">
+            <div class="pc-top"><span class="mono" style="color:var(--muted)">06 / In progress</span><span class="pc-ring" style="border-color:var(--line-2)"></span></div>
+            <div class="pc-soon-art">Building now</div>
+            <div class="pc-cat" style="color:var(--muted)">Fintech</div>
+            <h3>Card &amp; BNPL unit economics</h3>
+            <p>Interchange, credit losses, cost of funds and CAC.</p>
+            <div class="pc-tags" style="margin-bottom:0"><span>Unit Economics</span><span>Payments</span></div>
+          </article>
         </div>
       </div>
     </section>

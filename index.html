@@ -189,6 +189,16 @@
     .pc-sub { display: flex; gap: 14px; }
     .pc-sub a { font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--line-2); }
     .pc-sub a:hover { color: var(--ink); border-color: var(--accent); }
+    .pfeat { --accent: #2DD4BF; display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; margin-bottom: 20px; padding: 0; overflow: hidden; }
+    .pfeat .pc-shot { aspect-ratio: auto; min-height: 100%; border: 0; border-right: 1.5px solid var(--accent); border-radius: 0; }
+    .pfeat .pf-body { padding: 26px 28px 26px; display: flex; flex-direction: column; }
+    .pfeat h3 { font-size: clamp(26px, 2.4vw, 34px); margin-bottom: 10px; }
+    .pfeat .pf-desc { margin: 0 0 16px; font-size: 14.5px; line-height: 1.6; color: var(--body); }
+    .pf-star { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #04201D; font-size: 10.5px; padding: 5px 10px; border-radius: 99px; letter-spacing: .12em; }
+    .pc-top .pf-star { color: #04201D; font-weight: 700; }
+    .pf-ctas { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: auto; }
+    .pf-ctas .pill-btn { background: var(--accent); color: #04201D; padding: 10px 18px; font-size: 12px; }
+    .pf-ctas .pill-btn.ghost { background: transparent; color: var(--ink); }
     .pcard.soon { border-style: dashed; background: transparent; }
     .pcard.soon:hover { transform: none; box-shadow: none; }
     .pc-soon-art { aspect-ratio: 16 / 9; border-radius: 10px; border: 1.5px dashed var(--line-2); display: grid; place-items: center; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: repeating-linear-gradient(135deg, transparent 0 14px, var(--line) 14px 15px); }
@@ -339,6 +349,7 @@
     @media (max-width: 1080px) {
       .about { grid-template-columns: 1fr; }
       .pgrid { grid-template-columns: 1fr 1fr; }
+      .pfeat { grid-template-columns: 1fr; } .pfeat .pc-shot { aspect-ratio: 16 / 9; border-right: 0; border-bottom: 1.5px solid var(--accent); }
       .about { gap: 50px; } .portrait { max-width: 380px; }
       .skills { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; row-gap: 40px; } .steps::before, .steps .bar { display: none; }
@@ -466,10 +477,22 @@
           <div><h2 class="split">Built end to end. <span class="o">Live to try.</span></h2>
           <p class="reveal">Personal projects where I own everything: problem framing, PRD, prototype, metrics and write-up.</p></div>
         </div>
+        <article class="pcard pfeat reveal">
+          <a class="pc-shot" href="https://aayushm1.github.io/pasteguard/" target="_blank" rel="noopener" data-cursor="big"><img src="img/pasteguard.jpg" alt="PasteGuard live demo: pasted text on the left, masked placeholders on the right" loading="lazy" /></a>
+          <div class="pf-body">
+            <div class="pc-top"><span class="mono">01 / Live · Shipped v0.1</span><span class="pf-star mono">★ Featured</span></div>
+            <div class="pc-cat" style="margin-top:0">Chrome extension · AI privacy</div>
+            <h3>PasteGuard</h3>
+            <p class="pf-desc">People paste client emails, tickets and code into ChatGPT every day, full of names, emails, card numbers and API keys. PasteGuard masks them <em>the moment you paste</em>, so the AI only sees <code>[EMAIL_1]</code>, then shows the real values back in the reply. Checksum-validated detectors, a memory-only vault and zero servers: <em>nothing leaves the browser.</em></p>
+            <div class="pc-metrics"><div><b>12</b><span>detectors, Luhn / Verhoeff / IBAN-checked</span></div><div><b>0 bytes</b><span>sent to any server</span></div><div><b>9 AI sites</b><span>ChatGPT, Claude, Gemini &amp; more</span></div></div>
+            <div class="pc-tags"><span>Shipped product</span><span>AI Trust</span><span>Chrome MV3</span><span>Freemium strategy</span></div>
+            <div class="pf-ctas"><a class="pill-btn magnet" href="https://aayushm1.github.io/pasteguard/" target="_blank" rel="noopener">Try the live demo ↗</a><a class="pill-btn ghost" href="https://github.com/aayushm1/pasteguard/releases/latest" target="_blank" rel="noopener">Install free</a><span class="pc-sub"><a href="https://github.com/aayushm1/pasteguard" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/aayushm1/pasteguard#readme" target="_blank" rel="noopener">Product notes</a></span></div>
+          </div>
+        </article>
         <div class="pgrid">
           <article class="pcard reveal" style="--accent:#4C8DFF">
-            <div class="pc-top"><span class="mono">01 / Live</span><span class="pc-ring"></span></div>
-            <a class="pc-shot" href="https://aayushm1.github.io/proposal-lens/" target="_blank" rel="noopener" data-cursor="big"><img src="img/proposal-lens.jpg" alt="Proposal Lens screenshot" loading="lazy" /><span class="new mono">New</span></a>
+            <div class="pc-top"><span class="mono">02 / Live</span><span class="pc-ring"></span></div>
+            <a class="pc-shot" href="https://aayushm1.github.io/proposal-lens/" target="_blank" rel="noopener" data-cursor="big"><img src="img/proposal-lens.jpg" alt="Proposal Lens screenshot" loading="lazy" /></a>
             <div class="pc-cat">AI hotel proposal analyst · Event tech</div>
             <h3>Proposal Lens</h3>
             <p>Event planners shortlist hotels on the quoted room rate, but fees, F&amp;B minimums and penalty clauses decide the real price. An AI analyst that turns 5 messy proposals into one <em>true total cost</em>, flags risky clauses against market benchmarks, stress-tests an attendance drop and drafts the counter-proposal.</p>
@@ -478,7 +501,7 @@
             <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/proposal-lens/" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://github.com/aayushm1/proposal-lens#readme" target="_blank" rel="noopener">Case study</a><a href="https://github.com/aayushm1/proposal-lens/blob/main/HOW-IT-WORKS.md" target="_blank" rel="noopener">How it works</a></span></div>
           </article>
           <article class="pcard reveal" style="--accent:#A78BFA">
-            <div class="pc-top"><span class="mono">02 / Live</span><span class="pc-ring"></span></div>
+            <div class="pc-top"><span class="mono">03 / Live</span><span class="pc-ring"></span></div>
             <a class="pc-shot" href="https://aayushm1.github.io/renewal-decision-room/app.html" target="_blank" rel="noopener" data-cursor="big"><img src="img/renewal-decision-room.jpg" alt="Renewal Decision Room screenshot" loading="lazy" /></a>
             <div class="pc-cat">AI renewal agent · B2B SaaS</div>
             <h3>Renewal Decision Room</h3>
@@ -488,7 +511,7 @@
             <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/renewal-decision-room/app.html" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://aayushm1.github.io/renewal-decision-room/" target="_blank" rel="noopener">Case study</a><a href="https://github.com/aayushm1/renewal-decision-room/blob/main/HOW-IT-WORKS.md" target="_blank" rel="noopener">How it works</a></span></div>
           </article>
           <article class="pcard reveal" style="--accent:#3DDC84">
-            <div class="pc-top"><span class="mono">03 / Live</span><span class="pc-ring"></span></div>
+            <div class="pc-top"><span class="mono">04 / Live</span><span class="pc-ring"></span></div>
             <a class="pc-shot" href="https://aayushm1.github.io/fraud-rules-playground/" target="_blank" rel="noopener" data-cursor="big"><img src="img/fraud-rules-playground.jpg" alt="Fraud Rules Playground screenshot" loading="lazy" /></a>
             <div class="pc-cat">Payments risk simulator · Fintech</div>
             <h3>Fraud Rules Playground</h3>
@@ -498,7 +521,7 @@
             <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/fraud-rules-playground/" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://github.com/aayushm1/fraud-rules-playground" target="_blank" rel="noopener">Case study</a></span></div>
           </article>
           <article class="pcard reveal" style="--accent:#F5A524">
-            <div class="pc-top"><span class="mono">04 / Live</span><span class="pc-ring"></span></div>
+            <div class="pc-top"><span class="mono">05 / Live</span><span class="pc-ring"></span></div>
             <a class="pc-shot" href="https://aayushm1.github.io/sidelinereel/" target="_blank" rel="noopener" data-cursor="big"><img src="img/sidelinereel.jpg" alt="SidelineReel screenshot" loading="lazy" /></a>
             <div class="pc-cat">AI confidence gate · Consumer sports</div>
             <h3>SidelineReel</h3>
@@ -508,7 +531,7 @@
             <div class="pc-links"><a class="pc-open" href="https://aayushm1.github.io/sidelinereel/" target="_blank" rel="noopener">Open live experience <i>→</i></a><span class="pc-sub"><a href="https://github.com/aayushm1/sidelinereel" target="_blank" rel="noopener">Code</a></span></div>
           </article>
           <article class="pcard soon reveal">
-            <div class="pc-top"><span class="mono" style="color:var(--muted)">05 / In progress</span><span class="pc-ring" style="border-color:var(--line-2)"></span></div>
+            <div class="pc-top"><span class="mono" style="color:var(--muted)">06 / In progress</span><span class="pc-ring" style="border-color:var(--line-2)"></span></div>
             <div class="pc-soon-art">Building now</div>
             <div class="pc-cat" style="color:var(--muted)">Fintech</div>
             <h3>Loan Decision Engine</h3>
@@ -516,7 +539,7 @@
             <div class="pc-tags" style="margin-bottom:0"><span>Lending</span><span>Credit Risk</span></div>
           </article>
           <article class="pcard soon reveal">
-            <div class="pc-top"><span class="mono" style="color:var(--muted)">06 / In progress</span><span class="pc-ring" style="border-color:var(--line-2)"></span></div>
+            <div class="pc-top"><span class="mono" style="color:var(--muted)">07 / In progress</span><span class="pc-ring" style="border-color:var(--line-2)"></span></div>
             <div class="pc-soon-art">Building now</div>
             <div class="pc-cat" style="color:var(--muted)">Fintech</div>
             <h3>Card &amp; BNPL unit economics</h3>
